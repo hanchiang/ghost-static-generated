@@ -5,13 +5,12 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
-    <title>Managing and reusing connection in MongoDB</title>
+    <title>jquery sparklines charts in Angular2</title>
     <meta name="HandheldFriendly" content="True" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <link rel="stylesheet" type="text/css" href="../assets/built/screen.css" />
 
-    <meta name="description" content="Mongoose handles the connection pool automatically for us, but we have to the work ourselves for the node native driver." />
     <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon" />
     <link rel="canonical" href="/" />
     <meta name="referrer" content="no-referrer-when-downgrade" />
@@ -19,28 +18,27 @@
     
     <meta property="og:site_name" content="My website" />
     <meta property="og:type" content="article" />
-    <meta property="og:title" content="Managing and reusing connection in MongoDB" />
-    <meta property="og:description" content="Mongoose handles the connection pool automatically for us, but we have to the work ourselves for the node native driver. " />
-    <meta property="og:url" content="https://yaphc.com/managing-connections-in-mongodb/" />
-    <meta property="og:image" content="https://yaphc.com/content/images/2018/11/mongodb-logo.png" />
-    <meta property="article:published_time" content="2018-08-25T09:17:00.000Z" />
-    <meta property="article:modified_time" content="2018-11-05T14:41:40.000Z" />
-    <meta property="article:tag" content="MongoDB" />
-    <meta property="article:tag" content="node.js" />
-    <meta property="article:tag" content="express.js" />
+    <meta property="og:title" content="jquery sparklines charts in Angular2" />
+    <meta property="og:description" content="While working on my internship project that uses Angular2, I had to display some data in a nice chart which provides some interactivity. After browsing around for awhile, I settled for the jQuery Sparklines pie chart. It uses &amp;lt;canvas&amp;gt; to draw charts(Should I use canvas or svg?" />
+    <meta property="og:url" content="https://yaphc.com/jquery-sparklines-angular2/" />
+    <meta property="og:image" content="https://yaphc.com/content/images/2018/11/person-holding-tablet-with-chart.jpg" />
+    <meta property="article:published_time" content="2017-02-11T08:48:00.000Z" />
+    <meta property="article:modified_time" content="2018-11-06T10:20:53.000Z" />
+    <meta property="article:tag" content="jquery-sparklines" />
+    <meta property="article:tag" content="Angular2" />
     
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Managing and reusing connection in MongoDB" />
-    <meta name="twitter:description" content="Mongoose handles the connection pool automatically for us, but we have to the work ourselves for the node native driver. " />
-    <meta name="twitter:url" content="https://yaphc.com/managing-connections-in-mongodb/" />
-    <meta name="twitter:image" content="https://yaphc.com/content/images/2018/11/mongodb-logo.png" />
+    <meta name="twitter:title" content="jquery sparklines charts in Angular2" />
+    <meta name="twitter:description" content="While working on my internship project that uses Angular2, I had to display some data in a nice chart which provides some interactivity. After browsing around for awhile, I settled for the jQuery Sparklines pie chart. It uses &amp;lt;canvas&amp;gt; to draw charts(Should I use canvas or svg?" />
+    <meta name="twitter:url" content="https://yaphc.com/jquery-sparklines-angular2/" />
+    <meta name="twitter:image" content="https://yaphc.com/content/images/2018/11/person-holding-tablet-with-chart.jpg" />
     <meta name="twitter:label1" content="Written by" />
     <meta name="twitter:data1" content="Yap Han Chiang" />
     <meta name="twitter:label2" content="Filed under" />
-    <meta name="twitter:data2" content="MongoDB, node.js, express.js" />
+    <meta name="twitter:data2" content="jquery-sparklines, Angular2" />
     <meta name="twitter:site" content="@twitter.com" />
-    <meta property="og:image:width" content="1756" />
-    <meta property="og:image:height" content="477" />
+    <meta property="og:image:width" content="2000" />
+    <meta property="og:image:height" content="1906" />
     
     <script type="application/ld+json">
 {
@@ -63,18 +61,18 @@
         "url": "https://yaphc.com/author/yaphc/",
         "sameAs": []
     },
-    "headline": "Managing and reusing connection in MongoDB",
-    "url": "https://yaphc.com/managing-connections-in-mongodb/",
-    "datePublished": "2018-08-25T09:17:00.000Z",
-    "dateModified": "2018-11-05T14:41:40.000Z",
+    "headline": "jquery sparklines charts in Angular2",
+    "url": "https://yaphc.com/jquery-sparklines-angular2/",
+    "datePublished": "2017-02-11T08:48:00.000Z",
+    "dateModified": "2018-11-06T10:20:53.000Z",
     "image": {
         "@type": "ImageObject",
-        "url": "https://yaphc.com/content/images/2018/11/mongodb-logo.png",
-        "width": 1756,
-        "height": 477
+        "url": "https://yaphc.com/content/images/2018/11/person-holding-tablet-with-chart.jpg",
+        "width": 2000,
+        "height": 1906
     },
-    "keywords": "MongoDB, node.js, express.js",
-    "description": "Mongoose handles the connection pool automatically for us, but we have to the work ourselves for the node native driver. ",
+    "keywords": "jquery-sparklines, Angular2",
+    "description": "While working on my internship project that uses Angular2, I had to display some data in a nice chart which provides some interactivity. After browsing around for awhile, I settled for the jQuery Sparklines pie chart. It uses &amp;lt;canvas&amp;gt; to draw charts(Should I use canvas or svg?",
     "mainEntityOfPage": {
         "@type": "WebPage",
         "@id": "https://yaphc.com/"
@@ -93,7 +91,7 @@ ghost.init({
     <link rel="alternate" type="application/rss+xml" title="My website" href="../rss/" />
 
 </head>
-<body class="post-template tag-mongodb tag-node-js tag-express-js">
+<body class="post-template tag-jquery-sparklines tag-angular2">
 
     <div class="site-wrapper">
 
@@ -154,190 +152,75 @@ ghost.init({
 <main id="site-main" class="site-main outer">
     <div class="inner">
 
-        <article class="post-full post tag-mongodb tag-node-js tag-express-js ">
+        <article class="post-full post tag-jquery-sparklines tag-angular2 ">
 
             <header class="post-full-header">
                 <section class="post-full-meta">
-                    <time class="post-full-meta-date" datetime="2018-08-25">25 August 2018</time>
-                        <span class="date-divider">/</span> <a href="../tag/mongodb/">MongoDB</a>
+                    <time class="post-full-meta-date" datetime="2017-02-11">11 February 2017</time>
+                        <span class="date-divider">/</span> <a href="../tag/jquery-sparklines/">jquery-sparklines</a>
                 </section>
-                <h1 class="post-full-title">Managing connections in MongoDB</h1>
+                <h1 class="post-full-title">jquery sparklines charts in Angular2</h1>
             </header>
 
-            <figure class="post-full-image" style="background-image: url(../content/images/2018/11/mongodb-logo.png)">
+            <figure class="post-full-image" style="background-image: url(../content/images/2018/11/person-holding-tablet-with-chart.jpg)">
             </figure>
 
             <section class="post-full-content">
                 <div class="post-content">
-                    <h1 id="introductiontomongodb">Introduction to MongoDB</h1>
-<p>MongoDB is a NoSQL database that allows us to store data in other formats such as object, document, graph other than tabular relations using relational databases. As it is designed for horizontal scaling, NoSQL is increasingly used in applications that handle a huge volume of data, and real-time analytics.</p>
-<p>Personally, I am using MongoDB out of interest, to learn a new technology and apply it to in my own side project. Like others, I followed tutorials and courses which used mongoose, a Object Document Mapper for MongoDB, to abstract nitty-gritty details away to provide a streamlined learning experience to new developers.</p>
-<p>However, this time, I am using the <a href="https://mongodb.github.io/node-mongodb-native/" target="_blank">native driver</a>, in an attempt to learn to use the actual MongoDB syntax and commands.<br>
-So, the very first roadblock that I faced is to manage the connections, which mongoose already takes good care of.</p>
-<h2 id="managingmongodbconnections">Managing MongoDB connections</h2>
-<p>A quick research on StackOverflow and other websites suggest the following:</p>
+                    <p>While working on my internship project that uses Angular2, I had to display some data in a nice chart which provides some interactivity. After browsing around for awhile, I settled for the jQuery Sparklines pie chart.</p>
+<p>It uses <code>&lt;canvas&gt;</code> to draw charts<a href="https://www.sitepoint.com/canvas-vs-svg-choosing-the-right-tool-for-the-job/" target="_blank">(Should I use canvas or svg?)</a>, is simple and provides useful tooltip information when you hover over it.</p>
+<p>For more info, check out the <a href="https://omnipotent.net/jquery.sparkline/#s-docs" target="_blank">Sparklines documentation</a></p>
+<h2 id="piechartinaction">Pie chart in action</h2>
+<div class="kg-image-card-container">
+    <figure class="kg-card kg-image-card">
+        <img src="../content/images/2018/11/sparklines-example-1.png" class="kg-image" />
+        <figcaption>Basic pie chart</figcaption>
+    </figure>
+    <figure class="kg-card kg-image-card">
+        <img src="../content/images/2018/11/sparklines-example-hover-2.png" class="kg-image" />
+        <figcaption>On hover</figcaption>
+    </figure>
+</div>
+<p>The Sparklines pie chart looks like this. The segment of the chart is highlighted and a tooltip is displayed when hovered over.</p>
+<h2 id="gettingstarted">Getting started</h2>
 <ol>
-<li>Connect to MongoDB when the app starts</li>
-<li>Reuse the connection whenever the route handlers need to connect to the database</li>
+<li>Load <mark>jQuery</mark> library</li>
+<li>Load <mark>jquery.sparkline.js</mark>, which can be downloaded from the website</li>
+<li>An inline tag in the HTML to display the sparklines chart(e.g. <code>&lt;span&gt;</code>)</li>
+<li>Call the <code>sparkline</code> function to display the chart</li>
 </ol>
-<p>Sounds pretty simple. The next question I had in mind was: What is a good way to do this?</p>
-<p>Another quick search showed a few approaches:</p>
-<ol>
-<li>Connect to and store the MongoDB instance in <strong>req</strong> via an application level middleware before hitting the route handlers</li>
-<li>Connect to MongoDB and pass the instance to the route handlers, which does so by exporting a function</li>
-<li>Connect to MongoDB and store the instance. Route handlers and controllers that need access to the database will retrieve the instance</li>
-</ol>
-<h3 id="approach1storingmongodbinstanceinrequest">Approach 1: Storing MongoDB instance in request</h3>
-<p>This approach is the easiest to implement.<br>
-Set up a middleware that connects to the database, store the database instance in the request object, and use it in the route handlers.</p>
-<p><a href="https://github.com/floatdrop/express-mongo-db/blob/master/index.js" target="_blank">express-mongo-db</a> provides an example of how to do this.</p>
-<p>However, I found out via StackOverflow that it might not be a good idea to expose library codes in an object.</p>
-<h3 id="approach2passittoroutehandlers">Approach 2: Pass it to route handlers</h3>
-<p>This approach is detailed by <a href="https://blog.mlab.com/2017/05/mongodb-connection-pooling-for-express-applications/" target="_blank">mLab</a>, one of the most popular MongoDB cloud providers.</p>
-<ol>
-<li>Setup up the connections in a config file and export the database instances.</li>
-</ol>
-<pre>
-    <code data-language="javascript">
-        const MongoClient = require('mongodb').MongoClient
-     
-        // Note: A production application should not expose database credentials in plain text.
-        // For strategies on handling credentials, visit 12factor: https://12factor.net/config.
-        const PROD_URI = "mongodb://:@:,:/?replicaSet="
-        const MKTG_URI = "mongodb://:@:,:/?replicaSet="
-
-        function connect(url) {
-          return MongoClient.connect(url).then(client => client.db())
-        }
-
-        module.exports = async function() {
-          let databases = await Promise.all([connect(PROD_URI), connect(MKTG_URI)])
-
-          return {
-            production: databases[0],
-            marketing: databases[1]
-          }
-        }
-    </code>
-</pre>
-<ol start="2">
-<li>Pass app and dbs to route handlers to start working with the database.</li>
-</ol>
-<pre>
-    <code data-language="javascript">
-       module.exports = function(app, dbs) {
-     
-       app.get('/production', (req, res) => {
-        dbs.production.collection('test').find({}).toArray((err, docs) => {
-          if (err) {
-            console.log(err)
-            res.error(err)
-          } else {
-            res.json(docs)
-          }
-        })
-      })
-     
-      app.get('/marketing', (req, res) => {
-        dbs.marketing.collection('test').find({}).toArray((err, docs) => {
-          if (err) {
-            console.log(err)
-            res.error(err)
-          } else {
-            res.json(docs)
-          }
-        })
-      })
-     
-      return app
-    }
-    </code>
-</pre>
-<ol start="3">
-<li>Wire up the database connection, app and route handlers</li>
-</ol>
-<pre>
-    <code data-language="javascript">
-        const express = require('express')
-        const app = express()
-
-        const initializeDatabases = require('./dbs')
-        const routes = require('./routes')
-
-        initializeDatabases().then(dbs => {
-          // Initialize the application once database connections are ready.
-          routes(app, dbs).listen(3000, () => console.log('Listening on port 3000'))
-        }).catch(err => {
-          console.error('Failed to make all database connections!')
-          console.error(err)
-          process.exit(1)
-        })
-    </code>
-</pre>
-<p>Even though this approach works, it won't be as clean for my case as my route controllers are defined in its own file, not in the route handler itself. Therefore, one additonal hoop is needed to apss the database instance.</p>
-<h3 id="approach3storedbinstanceinafile">Approach 3: Store db instance in a file</h3>
-<p>I decided to search around for a bit more and found another <a href="https://stackoverflow.com/questions/10656574/how-do-i-manage-mongodb-connections-in-a-node-js-web-application/42058314#42058314" target="_blank">method</a> which I like best.</p>
-<ol>
-<li>Set up a connect() and get() function in the database config file</li>
-</ol>
-<pre>
-    <code data-language="javascript">
-        const MongoClient = require('mongodb').MongoClient;
-        let db;
-
-        exports.connect = () => {
-          if (!db) {
-            return MongoClient.connect(process.env.DATABASE, { useNewUrlParser: true })
-              .then(connection => {
-                db = connection.db();
-                console.log('Connected to database 👍👍👍');
-              })
-              .catch(err => {
-                db = undefined;
-                console.log(`☹☹☹ ${err.message}`);
-              });
-          }
-          return Promise.resolve();
-        }
-
-        exports.get = () => db;
-    </code>
-</pre>
-<ol start="2">
-<li>Connect to dataase and start express</li>
-</ol>
-<pre>
-    <code data-language="javascript">
-        const db = require('./db');
-        const app = require('./app');
-        const port = process.env.PORT || 7777;
-
-        db.connect()
-          .then(() => {
-            const server = app.listen(port, () => {
-              console.log(`Express running → PORT ${port}`);
-            });
-        });
-    </code>
-</pre>
-<ol start="3">
-<li>Require the database instance in route handlers/controllers</li>
-</ol>
-<pre>
-    <code data-language="javascript">
-        const db = require('../db');
-    
-        exports.getStores = async (req, res) => {
-          const stores = await db.get().collection('stores').find({}).toArray();
-
-          res.render('stores', { title: 'Stores', stores });
-        }
-    </code>
-</pre>
-<h2 id="closing">Closing</h2>
-<p>These approaches achieve a common goal: To create a single connection instance that allows it to be reused.</p>
-<p>The third approach does this in the simplest way that follows proper coding practices.</p>
-
+<h3 id="defaultlinechart">Default line chart</h3>
+<p>The documentation provides a few ways to display the sparkline chart.</p>
+<figure class="kg-card kg-image-card">
+    <img src="../content/images/2018/11/sparklines-jquery-code-example.jpg" class="kg-image" />
+    <figcaption>Ways to display sparklines</figcaption>
+</figure>
+<h3 id="piechartexample">Pie chart example</h3>
+<div class="kg-image-card-container">
+    <figure class="kg-card kg-image-card">
+        <img src="../content/images/2018/11/my-piechart-hover.png" class="kg-image" />
+    </figure>
+    <figure class="kg-card kg-image-card">
+        <img src="../content/images/2018/11/my-piechart-hover2-1.png" class="kg-image" />
+    </figure>
+</div>
+<p>This is the code for my pie chart. I used the jQuery's selector to select my <code>&lt;span&gt;</code> tag, and call the <code>sparkline</code> function, passing in two arguments, an <strong>array</strong> of values and an <strong>object</strong> of options.</p>
+<figure class="kg-card kg-image-card">
+    <img src="../content/images/2018/11/my-piechart-example-1.jpg" class="kg-image" />
+    <figcaption>Code in Angular 2</figcaption>
+</figure>
+<p><strong>1. Values</strong></p>
+<p>Put the values to be displayed in an array, which is passed in as the first argument to the <code>sparkline</code> function</p>
+<p><strong>2. Labels</strong></p>
+<p>Similarly, put the labels for the data in an array, which is to be used later in the tooltip</p>
+<p><strong>3. Tooltip</strong></p>
+<p>We use the <code>tooltipFormat</code> option to format out tooltip, and <code>tooltipValueLookups</code> option to provide the label to be displayed in the tooltip.</p>
+<p>Everything in the span tag is used to display a small circle with the colour of the element, specified in <code>sliceColors</code>.</p>
+<p><code>offset</code> is used to display the label name in the tooltip</p>
+<p><code>{{value}}</code> displays the value of the element</p>
+<p><code>({{percent.1}})</code> displays the percentage with one decimal surrounded by parentheses.</p>
+<p>Besides writing simple code, the ease of customisation of the tooltip is an added bonus which provides a good developer experience.</p>
+<p></p><p></p><p></p>
                 </div>
             </section>
 
@@ -371,18 +254,18 @@ Documenting my journey in computing.</p>
     <div class="inner">
         <div class="read-next-feed">
 
-                <article class="post-card post tag-logging tag-bunyan tag-node-js tag-express-js">
-        <a class="post-card-image-link" href="../bunyan-a-logging-tool-for-node-js/">
-            <div class="post-card-image" style="background-image: url(../content/images/2018/11/logs.jpeg)"></div>
+                <article class="post-card post tag-mongodb tag-node-js tag-express-js">
+        <a class="post-card-image-link" href="../managing-connections-in-mongodb/">
+            <div class="post-card-image" style="background-image: url(../content/images/2018/11/mongodb-logo.png)"></div>
         </a>
     <div class="post-card-content">
-        <a class="post-card-content-link" href="../bunyan-a-logging-tool-for-node-js/">
+        <a class="post-card-content-link" href="../managing-connections-in-mongodb/">
             <header class="post-card-header">
-                    <span class="post-card-tags">logging</span>
-                <h2 class="post-card-title">Bunyan: A logging tool for node.js</h2>
+                    <span class="post-card-tags">MongoDB</span>
+                <h2 class="post-card-title">Managing connections in MongoDB</h2>
             </header>
             <section class="post-card-excerpt">
-                <p>Motivation We are all familiar with using console.log() to log out information for debugging purposes. However, as the application grows, console.log gets littered everywhere. Also, there is formatting messaging is done</p>
+                <p>Introduction to MongoDB MongoDB is a NoSQL database that allows us to store data in other formats such as object, document, graph other than tabular relations using relational databases. As it is designed</p>
             </section>
         </a>
         <footer class="post-card-meta">
@@ -398,44 +281,12 @@ Documenting my journey in computing.</p>
                 </li>
             </ul>
 
-            <span class="reading-time">1 min read</span>
+            <span class="reading-time">3 min read</span>
 
         </footer>
     </div>
 </article>
 
-                <article class="post-card post tag-jquery-sparklines tag-angular2">
-        <a class="post-card-image-link" href="../jquery-sparklines-angular2/">
-            <div class="post-card-image" style="background-image: url(../content/images/2018/11/person-holding-tablet-with-chart.jpg)"></div>
-        </a>
-    <div class="post-card-content">
-        <a class="post-card-content-link" href="../jquery-sparklines-angular2/">
-            <header class="post-card-header">
-                    <span class="post-card-tags">jquery-sparklines</span>
-                <h2 class="post-card-title">jquery sparklines charts in Angular2</h2>
-            </header>
-            <section class="post-card-excerpt">
-                <p>While working on my internship project that uses Angular2, I had to display some data in a nice chart which provides some interactivity. After browsing around for awhile, I settled for the jQuery</p>
-            </section>
-        </a>
-        <footer class="post-card-meta">
-
-            <ul class="author-list">
-                <li class="author-list-item">
-
-                    <div class="author-name-tooltip">
-                        Yap Han Chiang
-                    </div>
-
-                        <a href="../author/yaphc/" class="static-avatar"><img class="author-profile-image" src="https://www.gravatar.com/avatar/50d7c86ec9e926a48b2a0df1ce340ad5?s=250&amp;d=mm&amp;r=x" alt="Yap Han Chiang" /></a>
-                </li>
-            </ul>
-
-            <span class="reading-time">2 min read</span>
-
-        </footer>
-    </div>
-</article>
 
         </div>
     </div>
@@ -448,17 +299,17 @@ Documenting my journey in computing.</p>
         </a>
     </div>
     <span class="floating-header-divider">&mdash;</span>
-    <div class="floating-header-title">Managing connections in MongoDB</div>
+    <div class="floating-header-title">jquery sparklines charts in Angular2</div>
     <div class="floating-header-share">
         <div class="floating-header-share-label">Share this <svg xmlns="https://www.w3.org/2000/svg" viewBox="0 0 24 24">
     <path d="M7.5 15.5V4a1.5 1.5 0 1 1 3 0v4.5h2a1 1 0 0 1 1 1h2a1 1 0 0 1 1 1H18a1.5 1.5 0 0 1 1.5 1.5v3.099c0 .929-.13 1.854-.385 2.748L17.5 23.5h-9c-1.5-2-5.417-8.673-5.417-8.673a1.2 1.2 0 0 1 1.76-1.605L7.5 15.5zm6-6v2m-3-3.5v3.5m6-1v2"/>
 </svg>
 </div>
-        <a class="floating-header-share-tw" href="https://twitter.com/share?text=Managing%20connections%20in%20MongoDB&amp;url=https://yaphc.com/managing-connections-in-mongodb/"
+        <a class="floating-header-share-tw" href="https://twitter.com/share?text=jquery%20sparklines%20charts%20in%20Angular2&amp;url=https://yaphc.com/jquery-sparklines-angular2/"
             onclick="window.open(this.href, 'share-twitter', 'width=550,height=235');return false;">
             <svg xmlns="https://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M30.063 7.313c-.813 1.125-1.75 2.125-2.875 2.938v.75c0 1.563-.188 3.125-.688 4.625a15.088 15.088 0 0 1-2.063 4.438c-.875 1.438-2 2.688-3.25 3.813a15.015 15.015 0 0 1-4.625 2.563c-1.813.688-3.75 1-5.75 1-3.25 0-6.188-.875-8.875-2.625.438.063.875.125 1.375.125 2.688 0 5.063-.875 7.188-2.5-1.25 0-2.375-.375-3.375-1.125s-1.688-1.688-2.063-2.875c.438.063.813.125 1.125.125.5 0 1-.063 1.5-.25-1.313-.25-2.438-.938-3.313-1.938a5.673 5.673 0 0 1-1.313-3.688v-.063c.813.438 1.688.688 2.625.688a5.228 5.228 0 0 1-1.875-2c-.5-.875-.688-1.813-.688-2.75 0-1.063.25-2.063.75-2.938 1.438 1.75 3.188 3.188 5.25 4.25s4.313 1.688 6.688 1.813a5.579 5.579 0 0 1 1.5-5.438c1.125-1.125 2.5-1.688 4.125-1.688s3.063.625 4.188 1.813a11.48 11.48 0 0 0 3.688-1.375c-.438 1.375-1.313 2.438-2.563 3.188 1.125-.125 2.188-.438 3.313-.875z"/></svg>
         </a>
-        <a class="floating-header-share-fb" href="https://www.facebook.com/sharer/sharer.php?u=https://yaphc.com/managing-connections-in-mongodb/"
+        <a class="floating-header-share-fb" href="https://www.facebook.com/sharer/sharer.php?u=https://yaphc.com/jquery-sparklines-angular2/"
             onclick="window.open(this.href, 'share-facebook','width=580,height=296');return false;">
             <svg xmlns="https://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M19 6h5V0h-5c-3.86 0-7 3.14-7 7v3H8v6h4v16h6V16h5l1-6h-6V7c0-.542.458-1 1-1z"/></svg>
         </a>
