@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <title>Managing and reusing connection in MongoDB</title>
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" type="text/css" href="../assets/built/screen.css" />
+
+    <meta name="description" content="Mongoose handles the connection pool automatically for us, but we have to the work ourselves for the node native driver." />
+    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon" />
+    <link rel="canonical" href="/" />
+    <meta name="referrer" content="no-referrer-when-downgrade" />
+    <link rel="amphtml" href="amp/" />
+    
+    <meta property="og:site_name" content="My website" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="Managing and reusing connection in MongoDB" />
+    <meta property="og:description" content="Mongoose handles the connection pool automatically for us, but we have to the work ourselves for the node native driver. " />
+    <meta property="og:url" content="https://yaphc.com/managing-connections-in-mongodb/" />
+    <meta property="og:image" content="https://yaphc.com/content/images/2018/11/mongodb-logo.png" />
+    <meta property="article:published_time" content="2018-08-25T09:17:00.000Z" />
+    <meta property="article:modified_time" content="2018-11-05T14:41:40.000Z" />
+    <meta property="article:tag" content="MongoDB" />
+    <meta property="article:tag" content="node.js" />
+    <meta property="article:tag" content="express.js" />
+    
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Managing and reusing connection in MongoDB" />
+    <meta name="twitter:description" content="Mongoose handles the connection pool automatically for us, but we have to the work ourselves for the node native driver. " />
+    <meta name="twitter:url" content="https://yaphc.com/managing-connections-in-mongodb/" />
+    <meta name="twitter:image" content="https://yaphc.com/content/images/2018/11/mongodb-logo.png" />
+    <meta name="twitter:label1" content="Written by" />
+    <meta name="twitter:data1" content="Yap Han Chiang" />
+    <meta name="twitter:label2" content="Filed under" />
+    <meta name="twitter:data2" content="MongoDB, node.js, express.js" />
+    <meta name="twitter:site" content="@twitter.com" />
+    <meta property="og:image:width" content="1756" />
+    <meta property="og:image:height" content="477" />
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name": "My website",
+        "logo": "https://casper.ghost.org/v1.0.0/images/ghost-logo.svg"
+    },
+    "author": {
+        "@type": "Person",
+        "name": "Yap Han Chiang",
+        "image": {
+            "@type": "ImageObject",
+            "url": "//www.gravatar.com/avatar/50d7c86ec9e926a48b2a0df1ce340ad5?s=250&d=mm&r=x",
+            "width": 250,
+            "height": 250
+        },
+        "url": "https://yaphc.com/author/yaphc/",
+        "sameAs": []
+    },
+    "headline": "Managing and reusing connection in MongoDB",
+    "url": "https://yaphc.com/managing-connections-in-mongodb/",
+    "datePublished": "2018-08-25T09:17:00.000Z",
+    "dateModified": "2018-11-05T14:41:40.000Z",
+    "image": {
+        "@type": "ImageObject",
+        "url": "https://yaphc.com/content/images/2018/11/mongodb-logo.png",
+        "width": 1756,
+        "height": 477
+    },
+    "keywords": "MongoDB, node.js, express.js",
+    "description": "Mongoose handles the connection pool automatically for us, but we have to the work ourselves for the node native driver. ",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://yaphc.com/"
+    }
+}
+    </script>
+
+    <script src="../public/ghost-sdk.js"></script>
+<script>
+ghost.init({
+	clientId: "ghost-frontend",
+	clientSecret: "4fa620a7e224"
+});
+</script>
+    <meta name="generator" content="Ghost 2.4" />
+    <link rel="alternate" type="application/rss+xml" title="My website" href="../rss/" />
+
+</head>
+<body class="post-template tag-mongodb tag-node-js tag-express-js">
+
+    <div class="site-wrapper">
+
+        
+
+<header class="site-header outer">
+    <div class="inner">
+        <nav class="site-nav">
+    <div class="site-nav-left">
+                <a class="site-nav-logo" href="../"><img src="https://casper.ghost.org/v1.0.0/images/ghost-logo.svg" alt="My website" /></a>
+            <ul class="nav" role="menu">
+    <li class="nav-home" role="menuitem"><a href="../">Home</a></li>
+    <li class="nav-about" role="menuitem"><a href="../about/">About</a></li>
+</ul>
+
+    </div>
+    <div class="site-nav-right">
+        <div class="social-links">
+                <a class="social-link social-link-tw" href="https://twitter.com/twitter.com" title="Twitter" target="_blank" rel="noopener"><svg xmlns="https://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M30.063 7.313c-.813 1.125-1.75 2.125-2.875 2.938v.75c0 1.563-.188 3.125-.688 4.625a15.088 15.088 0 0 1-2.063 4.438c-.875 1.438-2 2.688-3.25 3.813a15.015 15.015 0 0 1-4.625 2.563c-1.813.688-3.75 1-5.75 1-3.25 0-6.188-.875-8.875-2.625.438.063.875.125 1.375.125 2.688 0 5.063-.875 7.188-2.5-1.25 0-2.375-.375-3.375-1.125s-1.688-1.688-2.063-2.875c.438.063.813.125 1.125.125.5 0 1-.063 1.5-.25-1.313-.25-2.438-.938-3.313-1.938a5.673 5.673 0 0 1-1.313-3.688v-.063c.813.438 1.688.688 2.625.688a5.228 5.228 0 0 1-1.875-2c-.5-.875-.688-1.813-.688-2.75 0-1.063.25-2.063.75-2.938 1.438 1.75 3.188 3.188 5.25 4.25s4.313 1.688 6.688 1.813a5.579 5.579 0 0 1 1.5-5.438c1.125-1.125 2.5-1.688 4.125-1.688s3.063.625 4.188 1.813a11.48 11.48 0 0 0 3.688-1.375c-.438 1.375-1.313 2.438-2.563 3.188 1.125-.125 2.188-.438 3.313-.875z"/></svg>
+</a>
+            <a class="social-link social-link-gh" href="https://github.com/hanchiang" title="Github" target="_blank" rel="noopener"><?xml version="1.0" encoding="iso-8859-1"?>
+<!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "https://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="Capa_1" xmlns="https://www.w3.org/2000/svg" xmlns:xlink="https://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="20px" height="20px" viewBox="0 0 438.549 438.549" style="enable-background:new 0 0 438.549 438.549;"
+	 xml:space="preserve">
+	<path d="M409.132,114.573c-19.608-33.596-46.205-60.194-79.798-79.8C295.736,15.166,259.057,5.365,219.271,5.365
+		c-39.781,0-76.472,9.804-110.063,29.408c-33.596,19.605-60.192,46.204-79.8,79.8C9.803,148.168,0,184.854,0,224.63
+		c0,47.78,13.94,90.745,41.827,128.906c27.884,38.164,63.906,64.572,108.063,79.227c5.14,0.954,8.945,0.283,11.419-1.996
+		c2.475-2.282,3.711-5.14,3.711-8.562c0-0.571-0.049-5.708-0.144-15.417c-0.098-9.709-0.144-18.179-0.144-25.406l-6.567,1.136
+		c-4.187,0.767-9.469,1.092-15.846,1c-6.374-0.089-12.991-0.757-19.842-1.999c-6.854-1.231-13.229-4.086-19.13-8.559
+		c-5.898-4.473-10.085-10.328-12.56-17.556l-2.855-6.57c-1.903-4.374-4.899-9.233-8.992-14.559
+		c-4.093-5.331-8.232-8.945-12.419-10.848l-1.999-1.431c-1.332-0.951-2.568-2.098-3.711-3.429c-1.142-1.331-1.997-2.663-2.568-3.997
+		c-0.572-1.335-0.098-2.43,1.427-3.289c1.525-0.859,4.281-1.276,8.28-1.276l5.708,0.853c3.807,0.763,8.516,3.042,14.133,6.851
+		c5.614,3.806,10.229,8.754,13.846,14.842c4.38,7.806,9.657,13.754,15.846,17.847c6.184,4.093,12.419,6.136,18.699,6.136
+		c6.28,0,11.704-0.476,16.274-1.423c4.565-0.952,8.848-2.383,12.847-4.285c1.713-12.758,6.377-22.559,13.988-29.41
+		c-10.848-1.14-20.601-2.857-29.264-5.14c-8.658-2.286-17.605-5.996-26.835-11.14c-9.235-5.137-16.896-11.516-22.985-19.126
+		c-6.09-7.614-11.088-17.61-14.987-29.979c-3.901-12.374-5.852-26.648-5.852-42.826c0-23.035,7.52-42.637,22.557-58.817
+		c-7.044-17.318-6.379-36.732,1.997-58.24c5.52-1.715,13.706-0.428,24.554,3.853c10.85,4.283,18.794,7.952,23.84,10.994
+		c5.046,3.041,9.089,5.618,12.135,7.708c17.705-4.947,35.976-7.421,54.818-7.421s37.117,2.474,54.823,7.421l10.849-6.849
+		c7.419-4.57,16.18-8.758,26.262-12.565c10.088-3.805,17.802-4.853,23.134-3.138c8.562,21.509,9.325,40.922,2.279,58.24
+		c15.036,16.18,22.559,35.787,22.559,58.817c0,16.178-1.958,30.497-5.853,42.966c-3.9,12.471-8.941,22.457-15.125,29.979
+		c-6.191,7.521-13.901,13.85-23.131,18.986c-9.232,5.14-18.182,8.85-26.84,11.136c-8.662,2.286-18.415,4.004-29.263,5.146
+		c9.894,8.562,14.842,22.077,14.842,40.539v60.237c0,3.422,1.19,6.279,3.572,8.562c2.379,2.279,6.136,2.95,11.276,1.995
+		c44.163-14.653,80.185-41.062,108.068-79.226c27.88-38.161,41.825-81.126,41.825-128.906
+		C438.536,184.851,428.728,148.168,409.132,114.573z"/>
+</svg>
+</a>
+        </div>
+            <a class="rss-button" href="https://feedly.com/i/subscription/feed/https://yaphc.com/rss/" title="RSS" target="_blank" rel="noopener"><svg xmlns="https://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="6.18" cy="17.82" r="2.18"/><path d="M4 4.44v2.83c7.03 0 12.73 5.7 12.73 12.73h2.83c0-8.59-6.97-15.56-15.56-15.56zm0 5.66v2.83c3.9 0 7.07 3.17 7.07 7.07h2.83c0-5.47-4.43-9.9-9.9-9.9z"/></svg>
+</a>
+    </div>
+</nav>
+    </div>
+</header>
+
+
+<main id="site-main" class="site-main outer">
+    <div class="inner">
+
+        <article class="post-full post tag-mongodb tag-node-js tag-express-js ">
+
+            <header class="post-full-header">
+                <section class="post-full-meta">
+                    <time class="post-full-meta-date" datetime="2018-08-25">25 August 2018</time>
+                        <span class="date-divider">/</span> <a href="../tag/mongodb/">MongoDB</a>
+                </section>
+                <h1 class="post-full-title">Managing connections in MongoDB</h1>
+            </header>
+
+            <figure class="post-full-image" style="background-image: url(../content/images/2018/11/mongodb-logo.png)">
+            </figure>
+
+            <section class="post-full-content">
+                <div class="post-content">
+                    <h1 id="introductiontomongodb">Introduction to MongoDB</h1>
+<p>MongoDB is a NoSQL database that allows us to store data in other formats such as object, document, graph other than tabular relations using relational databases. As it is designed for horizontal scaling, NoSQL is increasingly used in applications that handle a huge volume of data, and real-time analytics.</p>
+<p>Personally, I am using MongoDB out of interest, to learn a new technology and apply it to in my own side project. Like others, I followed tutorials and courses which used mongoose, a Object Document Mapper for MongoDB, to abstract nitty-gritty details away to provide a streamlined learning experience to new developers.</p>
+<p>However, this time, I am using the <a href="https://mongodb.github.io/node-mongodb-native/" target="_blank">native driver</a>, in an attempt to learn to use the actual MongoDB syntax and commands.<br>
+So, the very first roadblock that I faced is to manage the connections, which mongoose already takes good care of.</p>
+<h2 id="managingmongodbconnections">Managing MongoDB connections</h2>
+<p>A quick research on StackOverflow and other websites suggest the following:</p>
+<ol>
+<li>Connect to MongoDB when the app starts</li>
+<li>Reuse the connection whenever the route handlers need to connect to the database</li>
+</ol>
+<p>Sounds pretty simple. The next question I had in mind was: What is a good way to do this?</p>
+<p>Another quick search showed a few approaches:</p>
+<ol>
+<li>Connect to and store the MongoDB instance in <strong>req</strong> via an application level middleware before hitting the route handlers</li>
+<li>Connect to MongoDB and pass the instance to the route handlers, which does so by exporting a function</li>
+<li>Connect to MongoDB and store the instance. Route handlers and controllers that need access to the database will retrieve the instance</li>
+</ol>
+<h3 id="approach1storingmongodbinstanceinrequest">Approach 1: Storing MongoDB instance in request</h3>
+<p>This approach is the easiest to implement.<br>
+Set up a middleware that connects to the database, store the database instance in the request object, and use it in the route handlers.</p>
+<p><a href="https://github.com/floatdrop/express-mongo-db/blob/master/index.js" target="_blank">express-mongo-db</a> provides an example of how to do this.</p>
+<p>However, I found out via StackOverflow that it might not be a good idea to expose library codes in an object.</p>
+<h3 id="approach2passittoroutehandlers">Approach 2: Pass it to route handlers</h3>
+<p>This approach is detailed by <a href="https://blog.mlab.com/2017/05/mongodb-connection-pooling-for-express-applications/" target="_blank">mLab</a>, one of the most popular MongoDB cloud providers.</p>
+<ol>
+<li>Setup up the connections in a config file and export the database instances.</li>
+</ol>
+<pre>
+    <code data-language="javascript">
+        const MongoClient = require('mongodb').MongoClient
+     
+        // Note: A production application should not expose database credentials in plain text.
+        // For strategies on handling credentials, visit 12factor: https://12factor.net/config.
+        const PROD_URI = "mongodb://:@:,:/?replicaSet="
+        const MKTG_URI = "mongodb://:@:,:/?replicaSet="
+
+        function connect(url) {
+          return MongoClient.connect(url).then(client => client.db())
+        }
+
+        module.exports = async function() {
+          let databases = await Promise.all([connect(PROD_URI), connect(MKTG_URI)])
+
+          return {
+            production: databases[0],
+            marketing: databases[1]
+          }
+        }
+    </code>
+</pre>
+<ol start="2">
+<li>Pass app and dbs to route handlers to start working with the database.</li>
+</ol>
+<pre>
+    <code data-language="javascript">
+       module.exports = function(app, dbs) {
+     
+       app.get('/production', (req, res) => {
+        dbs.production.collection('test').find({}).toArray((err, docs) => {
+          if (err) {
+            console.log(err)
+            res.error(err)
+          } else {
+            res.json(docs)
+          }
+        })
+      })
+     
+      app.get('/marketing', (req, res) => {
+        dbs.marketing.collection('test').find({}).toArray((err, docs) => {
+          if (err) {
+            console.log(err)
+            res.error(err)
+          } else {
+            res.json(docs)
+          }
+        })
+      })
+     
+      return app
+    }
+    </code>
+</pre>
+<ol start="3">
+<li>Wire up the database connection, app and route handlers</li>
+</ol>
+<pre>
+    <code data-language="javascript">
+        const express = require('express')
+        const app = express()
+
+        const initializeDatabases = require('./dbs')
+        const routes = require('./routes')
+
+        initializeDatabases().then(dbs => {
+          // Initialize the application once database connections are ready.
+          routes(app, dbs).listen(3000, () => console.log('Listening on port 3000'))
+        }).catch(err => {
+          console.error('Failed to make all database connections!')
+          console.error(err)
+          process.exit(1)
+        })
+    </code>
+</pre>
+<p>Even though this approach works, it won't be as clean for my case as my route controllers are defined in its own file, not in the route handler itself. Therefore, one additonal hoop is needed to apss the database instance.</p>
+<h3 id="approach3storedbinstanceinafile">Approach 3: Store db instance in a file</h3>
+<p>I decided to search around for a bit more and found another <a href="https://stackoverflow.com/questions/10656574/how-do-i-manage-mongodb-connections-in-a-node-js-web-application/42058314#42058314" target="_blank">method</a> which I like best.</p>
+<ol>
+<li>Set up a connect() and get() function in the database config file</li>
+</ol>
+<pre>
+    <code data-language="javascript">
+        const MongoClient = require('mongodb').MongoClient;
+        let db;
+
+        exports.connect = () => {
+          if (!db) {
+            return MongoClient.connect(process.env.DATABASE, { useNewUrlParser: true })
+              .then(connection => {
+                db = connection.db();
+                console.log('Connected to database 👍👍👍');
+              })
+              .catch(err => {
+                db = undefined;
+                console.log(`☹☹☹ ${err.message}`);
+              });
+          }
+          return Promise.resolve();
+        }
+
+        exports.get = () => db;
+    </code>
+</pre>
+<ol start="2">
+<li>Connect to dataase and start express</li>
+</ol>
+<pre>
+    <code data-language="javascript">
+        const db = require('./db');
+        const app = require('./app');
+        const port = process.env.PORT || 7777;
+
+        db.connect()
+          .then(() => {
+            const server = app.listen(port, () => {
+              console.log(`Express running → PORT ${port}`);
+            });
+        });
+    </code>
+</pre>
+<ol start="3">
+<li>Require the database instance in route handlers/controllers</li>
+</ol>
+<pre>
+    <code data-language="javascript">
+        const db = require('../db');
+    
+        exports.getStores = async (req, res) => {
+          const stores = await db.get().collection('stores').find({}).toArray();
+
+          res.render('stores', { title: 'Stores', stores });
+        }
+    </code>
+</pre>
+<h2 id="closing">Closing</h2>
+<p>These approaches achieve a common goal: To create a single connection instance that allows it to be reused.</p>
+<p>The third approach does this in the simplest way that follows proper coding practices.</p>
+
+                </div>
+            </section>
+
+
+            <footer class="post-full-footer">
+
+
+                    
+<section class="author-card">
+        <img class="author-profile-image" src="https://www.gravatar.com/avatar/50d7c86ec9e926a48b2a0df1ce340ad5?s=250&amp;d=mm&amp;r=x" alt="Yap Han Chiang" />
+    <section class="author-card-content">
+        <h4 class="author-card-name"><a href="../author/yaphc/">Yap Han Chiang</a></h4>
+            <p>Full stack developer. 
+Documenting my journey in computing.</p>
+    </section>
+</section>
+<div class="post-full-footer-right">
+    <a class="author-card-button" href="../author/yaphc/">Read More</a>
+</div>
+
+
+            </footer>
+
+
+        </article>
+
+    </div>
+</main>
+
+<aside class="read-next outer">
+    <div class="inner">
+        <div class="read-next-feed">
+
+                <article class="post-card post tag-logging tag-bunyan tag-node-js tag-express-js">
+        <a class="post-card-image-link" href="../bunyan-a-logging-tool-for-node-js/">
+            <div class="post-card-image" style="background-image: url(../content/images/2018/11/logs.jpeg)"></div>
+        </a>
+    <div class="post-card-content">
+        <a class="post-card-content-link" href="../bunyan-a-logging-tool-for-node-js/">
+            <header class="post-card-header">
+                    <span class="post-card-tags">logging</span>
+                <h2 class="post-card-title">Bunyan: A logging tool for node.js</h2>
+            </header>
+            <section class="post-card-excerpt">
+                <p>Motivation We are all familiar with using console.log() to log out information for debugging purposes. However, as the application grows, console.log gets littered everywhere. Also, there is formatting messaging is done</p>
+            </section>
+        </a>
+        <footer class="post-card-meta">
+
+            <ul class="author-list">
+                <li class="author-list-item">
+
+                    <div class="author-name-tooltip">
+                        Yap Han Chiang
+                    </div>
+
+                        <a href="../author/yaphc/" class="static-avatar"><img class="author-profile-image" src="https://www.gravatar.com/avatar/50d7c86ec9e926a48b2a0df1ce340ad5?s=250&amp;d=mm&amp;r=x" alt="Yap Han Chiang" /></a>
+                </li>
+            </ul>
+
+            <span class="reading-time">1 min read</span>
+
+        </footer>
+    </div>
+</article>
+
+
+        </div>
+    </div>
+</aside>
+
+<div class="floating-header">
+    <div class="floating-header-logo">
+        <a href="../">
+            <span>My website</span>
+        </a>
+    </div>
+    <span class="floating-header-divider">&mdash;</span>
+    <div class="floating-header-title">Managing connections in MongoDB</div>
+    <div class="floating-header-share">
+        <div class="floating-header-share-label">Share this <svg xmlns="https://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <path d="M7.5 15.5V4a1.5 1.5 0 1 1 3 0v4.5h2a1 1 0 0 1 1 1h2a1 1 0 0 1 1 1H18a1.5 1.5 0 0 1 1.5 1.5v3.099c0 .929-.13 1.854-.385 2.748L17.5 23.5h-9c-1.5-2-5.417-8.673-5.417-8.673a1.2 1.2 0 0 1 1.76-1.605L7.5 15.5zm6-6v2m-3-3.5v3.5m6-1v2"/>
+</svg>
+</div>
+        <a class="floating-header-share-tw" href="https://twitter.com/share?text=Managing%20connections%20in%20MongoDB&amp;url=https://yaphc.com/managing-connections-in-mongodb/"
+            onclick="window.open(this.href, 'share-twitter', 'width=550,height=235');return false;">
+            <svg xmlns="https://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M30.063 7.313c-.813 1.125-1.75 2.125-2.875 2.938v.75c0 1.563-.188 3.125-.688 4.625a15.088 15.088 0 0 1-2.063 4.438c-.875 1.438-2 2.688-3.25 3.813a15.015 15.015 0 0 1-4.625 2.563c-1.813.688-3.75 1-5.75 1-3.25 0-6.188-.875-8.875-2.625.438.063.875.125 1.375.125 2.688 0 5.063-.875 7.188-2.5-1.25 0-2.375-.375-3.375-1.125s-1.688-1.688-2.063-2.875c.438.063.813.125 1.125.125.5 0 1-.063 1.5-.25-1.313-.25-2.438-.938-3.313-1.938a5.673 5.673 0 0 1-1.313-3.688v-.063c.813.438 1.688.688 2.625.688a5.228 5.228 0 0 1-1.875-2c-.5-.875-.688-1.813-.688-2.75 0-1.063.25-2.063.75-2.938 1.438 1.75 3.188 3.188 5.25 4.25s4.313 1.688 6.688 1.813a5.579 5.579 0 0 1 1.5-5.438c1.125-1.125 2.5-1.688 4.125-1.688s3.063.625 4.188 1.813a11.48 11.48 0 0 0 3.688-1.375c-.438 1.375-1.313 2.438-2.563 3.188 1.125-.125 2.188-.438 3.313-.875z"/></svg>
+        </a>
+        <a class="floating-header-share-fb" href="https://www.facebook.com/sharer/sharer.php?u=https://yaphc.com/managing-connections-in-mongodb/"
+            onclick="window.open(this.href, 'share-facebook','width=580,height=296');return false;">
+            <svg xmlns="https://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M19 6h5V0h-5c-3.86 0-7 3.14-7 7v3H8v6h4v16h6V16h5l1-6h-6V7c0-.542.458-1 1-1z"/></svg>
+        </a>
+    </div>
+    <progress id="reading-progress" class="progress" value="0">
+        <div class="progress-container">
+            <span class="progress-bar"></span>
+        </div>
+    </progress>
+</div>
+
+
+
+
+        <footer class="site-footer outer">
+            <div class="site-footer-content inner">
+                <section class="copyright"><a href="../">My website</a> &copy; 2018</section>
+                <nav class="site-footer-nav">
+                    <a href="../">Latest Posts</a>
+                    
+                    <a href="https://twitter.com/twitter.com" target="_blank" rel="noopener">Twitter</a>
+                    <a href="https://github.com/hanchiang" target="_blank" rel="noopener">Github</a>
+                </nav>
+            </div>
+        </footer>
+
+    </div>
+
+
+    <script>
+        var images = document.querySelectorAll('.kg-gallery-image img');
+        images.forEach(function (image) {
+            var container = image.closest('.kg-gallery-image');
+            var width = image.attributes.width.value;
+            var height = image.attributes.height.value;
+            var ratio = width / height;
+            container.style.flex = ratio + ' 1 0%';
+        })
+    </script>
+
+
+    <script
+        src="https://code.jquery.com/jquery-3.2.1.min.js"
+        integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+        crossorigin="anonymous">
+    </script>
+    <script type="text/javascript" src="../assets/built/jquery.fitvids.js"></script>
+
+    <script>
+
+// NOTE: Scroll performance is poor in Safari
+// - this appears to be due to the events firing much more slowly in Safari.
+//   Dropping the scroll event and using only a raf loop results in smoother
+//   scrolling but continuous processing even when not scrolling
+$(document).ready(function () {
+    // Start fitVids
+    var $postContent = $(".post-full-content");
+    $postContent.fitVids();
+    // End fitVids
+
+    var progressBar = document.querySelector('#reading-progress');
+    var header = document.querySelector('.floating-header');
+    var title = document.querySelector('.post-full-title');
+
+    var lastScrollY = window.scrollY;
+    var lastWindowHeight = window.innerHeight;
+    var lastDocumentHeight = $(document).height();
+    var ticking = false;
+
+    function onScroll() {
+        lastScrollY = window.scrollY;
+        requestTick();
+    }
+
+    function onResize() {
+        lastWindowHeight = window.innerHeight;
+        lastDocumentHeight = $(document).height();
+        requestTick();
+    }
+
+    function requestTick() {
+        if (!ticking) {
+            requestAnimationFrame(update);
+        }
+        ticking = true;
+    }
+
+    function update() {
+        var trigger = title.getBoundingClientRect().top + window.scrollY;
+        var triggerOffset = title.offsetHeight + 35;
+        var progressMax = lastDocumentHeight - lastWindowHeight;
+
+        // show/hide floating header
+        if (lastScrollY >= trigger + triggerOffset) {
+            header.classList.add('floating-active');
+        } else {
+            header.classList.remove('floating-active');
+        }
+
+        progressBar.setAttribute('max', progressMax);
+        progressBar.setAttribute('value', lastScrollY);
+
+        ticking = false;
+    }
+
+    window.addEventListener('scroll', onScroll, {passive: true});
+    window.addEventListener('resize', onResize, false);
+
+    update();
+
+});
+</script>
+
+<script src="../assets/js/rainbow.js"></script>
+
+
+
+    
+
+</body>
+</html>
