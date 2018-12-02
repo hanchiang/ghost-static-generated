@@ -22,7 +22,7 @@
     <meta property="og:url" content="https://yaphc.com/bunyan-a-logging-tool-for-node-js/" />
     <meta property="og:image" content="https://yaphc.com/content/images/2018/11/logs.jpeg" />
     <meta property="article:published_time" content="2018-10-29T10:20:00.000Z" />
-    <meta property="article:modified_time" content="2018-11-02T10:13:18.000Z" />
+    <meta property="article:modified_time" content="2018-12-02T08:35:52.000Z" />
     <meta property="article:tag" content="logging" />
     <meta property="article:tag" content="bunyan" />
     <meta property="article:tag" content="node.js" />
@@ -37,7 +37,6 @@
     <meta name="twitter:data1" content="Yap Han Chiang" />
     <meta name="twitter:label2" content="Filed under" />
     <meta name="twitter:data2" content="logging, bunyan, node.js, express.js" />
-    <meta name="twitter:site" content="@twitter.com" />
     <meta property="og:image:width" content="275" />
     <meta property="og:image:height" content="183" />
     
@@ -65,7 +64,7 @@
     "headline": "Bunyan: A logging tool for node.js",
     "url": "https://yaphc.com/bunyan-a-logging-tool-for-node-js/",
     "datePublished": "2018-10-29T10:20:00.000Z",
-    "dateModified": "2018-11-02T10:13:18.000Z",
+    "dateModified": "2018-12-02T08:35:52.000Z",
     "image": {
         "@type": "ImageObject",
         "url": "https://yaphc.com/content/images/2018/11/logs.jpeg",
@@ -135,6 +134,11 @@
 </code></pre>
 <p><strong>3. Logging methods</strong><br />
 There are several methods for logging such as <em>info</em>, <em>warn</em>, <em>error</em>, <em>debug</em>.</p>
+<p class="nomargin">e.g.</p>
+<pre><code class="language-javascript">    const logger = require(path/to/logger');
+    const port = process.env.PORT || 3000;
+    logger.info(`Express is running on port ${port}`);
+</code></pre>
 <p><strong>4. View output</strong><br />
 <code>[2018-10-29T10:04:08.045Z] INFO: my-logger/20194 on : Express is running on port 3000</code></p>
 <h3 id="optionalprettyprint">Optional: Pretty print</h3>
