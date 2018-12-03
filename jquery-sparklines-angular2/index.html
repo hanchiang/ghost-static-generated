@@ -16,7 +16,7 @@
     <meta name="referrer" content="no-referrer-when-downgrade" />
     <link rel="amphtml" href="amp/" />
     
-    <meta property="og:site_name" content="My website" />
+    <meta property="og:site_name" content="yaphc.com" />
     <meta property="og:type" content="article" />
     <meta property="og:title" content="jquery sparklines charts in Angular2" />
     <meta property="og:description" content="While working on my internship project that uses Angular2, I had to display some data in a nice chart which provides some interactivity. After browsing around for awhile, I settled for the jQuery Sparklines pie chart. It uses &amp;lt;canvas&amp;gt; to draw charts(Should I use canvas or svg?" />
@@ -45,7 +45,7 @@
     "@type": "Article",
     "publisher": {
         "@type": "Organization",
-        "name": "My website",
+        "name": "yaphc.com",
         "logo": "https://casper.ghost.org/v1.0.0/images/ghost-logo.svg"
     },
     "author": {
@@ -87,7 +87,7 @@ ghost.init({
 });
 </script>
     <meta name="generator" content="Ghost 2.6" />
-    <link rel="alternate" type="application/rss+xml" title="My website" href="../rss/" />
+    <link rel="alternate" type="application/rss+xml" title="yaphc.com" href="../rss/" />
 
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-130110378-1"></script>
@@ -109,7 +109,7 @@ ghost.init({
     <div class="inner">
         <nav class="site-nav">
     <div class="site-nav-left">
-                <a class="site-nav-logo" href="../"><img src="https://casper.ghost.org/v1.0.0/images/ghost-logo.svg" alt="My website" /></a>
+                <a class="site-nav-logo" href="../"><img src="https://casper.ghost.org/v1.0.0/images/ghost-logo.svg" alt="yaphc.com" /></a>
             <ul class="nav" role="menu">
     <li class="nav-home" role="menuitem"><a href="../">Home</a></li>
     <li class="nav-about" role="menuitem"><a href="../about/">About</a></li>
@@ -148,8 +148,7 @@ ghost.init({
 </svg>
 </a>
         </div>
-            <a class="rss-button" href="https://feedly.com/i/subscription/feed/https://yaphc.com/rss/" title="RSS" target="_blank" rel="noopener"><svg xmlns="https://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="6.18" cy="17.82" r="2.18"/><path d="M4 4.44v2.83c7.03 0 12.73 5.7 12.73 12.73h2.83c0-8.59-6.97-15.56-15.56-15.56zm0 5.66v2.83c3.9 0 7.07 3.17 7.07 7.07h2.83c0-5.47-4.43-9.9-9.9-9.9z"/></svg>
-</a>
+            <a class="subscribe-button" href="/#subscribe">Subscribe</a>
     </div>
 </nav>
     </div>
@@ -231,6 +230,33 @@ ghost.init({
                 </div>
             </section>
 
+            <section class="subscribe-form">
+                <h3 class="subscribe-form-title">Subscribe to yaphc.com</h3>
+                <p>Get the latest posts delivered right to your inbox</p>
+                <form method="post" action="https://yaphc.com/subscribe/" id="" class="">
+    <input class="confirm" type="hidden" name="confirm"  /><input class="location" type="hidden" name="location"  /><input class="referrer" type="hidden" name="referrer"  />
+
+    <div class="form-group">
+        <input class="subscribe-email" type="email" name="email" placeholder="youremail@example.com" />
+    </div>
+    <button id="" class="" type="submit"><span>Subscribe</span></button>
+    
+<script>
+    (function(g,h,o,s,t){
+        var buster = function(b,m) {
+            h[o]('input.'+b).forEach(function (i) {
+                i.value=i.value || m;
+            });
+        };
+        buster('location', g.location.href);
+        buster('referrer', h.referrer);
+    })(window,document,'querySelectorAll','value');
+</script>
+
+</form>
+
+
+            </section>
 
             <footer class="post-full-footer">
 
@@ -302,7 +328,7 @@ Documenting my journey in computing.</p>
 <div class="floating-header">
     <div class="floating-header-logo">
         <a href="../">
-            <span>My website</span>
+            <span>yaphc.com</span>
         </a>
     </div>
     <span class="floating-header-divider">&mdash;</span>
@@ -333,7 +359,7 @@ Documenting my journey in computing.</p>
 
         <footer class="site-footer outer">
             <div class="site-footer-content inner">
-                <section class="copyright"><a href="../">My website</a> &copy; 2018</section>
+                <section class="copyright"><a href="../">yaphc.com</a> &copy; 2018</section>
                 <nav class="site-footer-nav">
                     <a href="../">Latest Posts</a>
                     
@@ -345,6 +371,37 @@ Documenting my journey in computing.</p>
 
     </div>
 
+    <div id="subscribe" class="subscribe-overlay">
+        <a class="subscribe-overlay-close" href="/#"></a>
+        <div class="subscribe-overlay-content">
+                <img class="subscribe-overlay-logo" src="https://casper.ghost.org/v1.0.0/images/ghost-logo.svg" alt="yaphc.com" />
+            <h1 class="subscribe-overlay-title">Subscribe to yaphc.com</h1>
+            <p class="subscribe-overlay-description">Stay up to date! Get all the latest &amp; greatest posts delivered straight to your inbox</p>
+            <form method="post" action="https://yaphc.com/subscribe/" id="" class="">
+    <input class="confirm" type="hidden" name="confirm"  /><input class="location" type="hidden" name="location"  /><input class="referrer" type="hidden" name="referrer"  />
+
+    <div class="form-group">
+        <input class="subscribe-email" type="email" name="email" placeholder="youremail@example.com" />
+    </div>
+    <button id="" class="" type="submit"><span>Subscribe</span></button>
+    
+<script>
+    (function(g,h,o,s,t){
+        var buster = function(b,m) {
+            h[o]('input.'+b).forEach(function (i) {
+                i.value=i.value || m;
+            });
+        };
+        buster('location', g.location.href);
+        buster('referrer', h.referrer);
+    })(window,document,'querySelectorAll','value');
+</script>
+
+</form>
+
+
+        </div>
+    </div>
 
     <script>
         var images = document.querySelectorAll('.kg-gallery-image img');
