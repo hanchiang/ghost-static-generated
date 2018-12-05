@@ -1,4 +1,87 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="https://purl.org/dc/elements/1.1/" xmlns:content="https://purl.org/rss/1.0/modules/content/" xmlns:atom="https://www.w3.org/2005/Atom" version="2.0" xmlns:media="https://search.yahoo.com/mrss/"><channel><title><![CDATA[yaphc.com]]></title><description><![CDATA[The journey of a full stack developer which includes useful tips and tricks for finding your way around the world of technology.]]></description><link>https://yaphc.com/</link><image><url>https://yaphc.com/favicon.png</url><title>yaphc.com</title><link>https://yaphc.com/</link></image><generator>Ghost 2.6</generator><lastBuildDate>Wed, 05 Dec 2018 03:08:55 GMT</lastBuildDate><atom:link href="https://yaphc.com/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title><![CDATA[Why blog with ghost platform?]]></title><description><![CDATA[With popular website builders  such as wordpress and wix, why is it ever a good idea to blog with ghost platform? Answer: Pleasant writing eperience]]></description><link>https://yaphc.com/blog-ghost-platform/</link><guid isPermaLink="false">5bdd6c5a3785f35fbcc0ec79</guid><category><![CDATA[ghost platform]]></category><category><![CDATA[blog]]></category><dc:creator><![CDATA[Yap Han Chiang]]></dc:creator><pubDate>Sat, 01 Dec 2018 12:15:00 GMT</pubDate><media:content url="https://yaphc.com/content/images/2018/12/person-shadow-holding-door.jpeg" medium="image"/><content:encoded><![CDATA[<img src="https://yaphc.com/content/images/2018/12/person-shadow-holding-door.jpeg" alt="Why blog with ghost platform?"><p>Having tried Static Site Generators(SSGs) such as <a href="https://www.gatsbyjs.org/" target="_blank">Gatsby</a>, <a href="https://react-static.js.org/" target="_blank">React-Static</a>, <a href="https://gohugo.io/" target="_blank">Hugo</a>, I have to say that I am frustrated(<em>read: lazy</em>) at having to either buy into their templating system(Hugo), content retrieval workflow(Gatsby) or just simply starting from the ground up while building my own personal website.</p>
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="https://purl.org/dc/elements/1.1/" xmlns:content="https://purl.org/rss/1.0/modules/content/" xmlns:atom="https://www.w3.org/2005/Atom" version="2.0" xmlns:media="https://search.yahoo.com/mrss/"><channel><title><![CDATA[yaphc]]></title><description><![CDATA[The journey of a full stack developer which includes useful tips and tricks for finding your way around the world of technology.]]></description><link>https://yaphc.com/</link><image><url>https://yaphc.com/favicon.png</url><title>yaphc</title><link>https://yaphc.com/</link></image><generator>Ghost 2.6</generator><lastBuildDate>Wed, 05 Dec 2018 14:07:36 GMT</lastBuildDate><atom:link href="https://yaphc.com/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title><![CDATA[Hosting ghost blog as static website]]></title><description><![CDATA[Ghost offers a great writing experience. All is good except you either have to self-host or pay $36/month. However, it is possible to host it as a static website.]]></description><link>https://yaphc.com/ghost-blog-static-website/</link><guid isPermaLink="false">5c073aa15bbf8b62b1c099c8</guid><category><![CDATA[ghost]]></category><category><![CDATA[static website]]></category><category><![CDATA[netlify]]></category><dc:creator><![CDATA[Yap Han Chiang]]></dc:creator><pubDate>Wed, 05 Dec 2018 13:55:23 GMT</pubDate><media:content url="https://yaphc.com/content/images/2018/12/static-website.jpg" medium="image"/><content:encoded><![CDATA[<img src="https://yaphc.com/content/images/2018/12/static-website.jpg" alt="Hosting ghost blog as static website"><p>Previously: <a href="https://www.yaphc.com/blog-ghost-platform/">Why Blog with ghost platform?</a></p>
+<p>I discussed some of the merits and drawbacks of using the ghost platform from my own personal experience. In this post, I will talk about the approach that I use to bring my ghost website from a localhost development environment to a live website hosted on <a href="https://www.netlify.com/" target="_blank">Netlify</a>, a static web host.</p>
+<h1 id="whystaticwebsiteandwithghost">Why static website, and with ghost?</h1>
+<h2 id="staticwebsite">Static website</h2>
+<p>First, a static website is a website that consist of just a bunch of <code>HTML</code> files, together with <code>CSS</code> and <code>JS</code> assets.</p>
+<p>Think of the olden days where websites display the same content to every user. Every time a new piece of content needs to be added to the website, they are manually written into the these files.</p>
+<p>When a user visits your website, the relevant files are directly served to them without the need for a server to generate them on the fly because there is no database.</p>
+<figure class="kg-card kg-image-card">
+    <img src="https://yaphc.com/content/images/2018/12/static-vs-dynamic-website.jpg" width="400" alt="Hosting ghost blog as static website">
+    <figcaption>Static vs dynamic website</figcaption>
+</figure>
+<p>For many of us, we are looking for a website builder or system that allows us to create a blog and write posts, and that is a perfect usecase for a static website.</p>
+<h2 id="prosandconsofstaticwebsite">Pros and cons of static website</h2>
+<h3 id="pros">Pros</h3>
+<p><strong>1. Security</strong><br>
+A static website is generally safer than a dynamic website as there is no database to be cracked open. However, vulnerabilities do exist if 3rd party javascripts and dynamic features such as forms, payment gateway are used.</p>
+<p><strong>2. Speed</strong><br>
+Serving a static website is generally faster than a dynamic one, since there is no server to dynamically generate the web page.</p>
+<p><strong>3. Cheap</strong><br>
+There are numerous affordable options for hosting a static website, such as <a href="https://aws.amazon.com/s3/" target="_blank">AWS S3</a>, <a href="https://pages.github.com/" target="_blank">Github Pages</a>, <a href="https://firebase.google.com/docs/hosting/" target="_blank">Firebase Hosting</a>, <a href="https://cloud.google.com/storage/" target="_blank">Google Cloud Storage</a>, <a href="https://www.netlify.com/" target="_blank">Netlify</a></p>
+<p><strong>4. Scalability</strong><br>
+No dynamic website can beat any static website in terms of scalability. Once again, there is no database and application server for the case of a static website, all the web host does is to spit out the web page to visitors.</p>
+<h3 id="cons">Cons</h3>
+<p><strong>1. Unintuitive workflow</strong><br>
+Adding content to the website requires you to dive into <code>HTML</code>, <code>CSS</code> and <code>JS</code>, which could be overwhelming for the business executives or anyone who hasn't seen or heard of them before.</p>
+<h2 id="whyghost">Why ghost</h2>
+<p>For the case of hosting ghost as a static website, it functions more like a <a href="https://www.staticgen.com/about" target="_blank">Static Site Generator(SSG)</a> with a <a href="https://headlesscms.org/about" target="_blank">headless CMS</a>.</p>
+<p>Ghost offers a distraction-free writing experience with their simple and elegant admin panel, that is much simpler than wordpress.</p>
+<p>The flip side of the coin is that there are fewer features out of the box.</p>
+<h2 id="whynetlify">Why netlify</h2>
+<p>As mentioned above, there are many options for hosting a static website.</p>
+<p>Here are the features Netlify offer:</p>
+<ul>
+<li>A free web hosting plan</li>
+<li>Continuous deployment with git</li>
+<li>Automatic HTTPS setup</li>
+<li>Add a custom domain with Netlify's DNS hosting</li>
+<li>CDN to cache content around the world</li>
+<li>DDoS protection</li>
+<li>Load balancing</li>
+</ul>
+<p>Wow, that is a lot of freebies right out of the box, for <strong>free</strong>! Don't you feel excited just by reading these?</p>
+<p>Next, let's run over the process of generating the static website and deploying it to netlify.</p>
+<h2 id="therecipe">The recipe</h2>
+<ol>
+<li>Generate static website
+<ol>
+<li>Download an offline copy of the entire <em>yaphc.com</em> website</li>
+<li>Download <code>sitemap.xml</code> separately</li>
+<li>Fix internal links to point to the live domain</li>
+<li>Fix <code>css</code> and <code>js</code> assets links</li>
+<li>Use the https protocol instead of http</li>
+<li>Prettify URL (optional)</li>
+</ol>
+</li>
+<li>Deploy to <a href="https://www.netlify.com/" target="_blank">netlify</a>, an incredible static web host, for free!</li>
+</ol>
+<p><strong>Note</strong>: I have created a script to do generate a static website <a href="https://github.com/hanchiang/ghost-convert-static-website" target="_blank">here</a>.<br>
+The scripts are generously commented. Feel free to check it out and leave some feedback if you have any.</p>
+<h2 id="hostingstaticghostwebsiteatnetlify">Hosting static ghost website at netlify</h2>
+<p>First, we need to add a custom domain. Under <strong>Settings</strong> navigation menu, look for <strong>Domain management</strong>, and click on <strong>Add custom domain</strong>.<br>
+Your domain will be added after a quick verification process.</p>
+<figure class="kg-card kg-image-card">
+    <img src="https://yaphc.com/content/images/2018/12/netlify-add-custom-domain.jpg" class="kg-image" alt="Hosting ghost blog as static website">
+    <figcaption>Add a custom domain</figcaption>
+</figure>
+<p>Now, enter the DNS panel of the primary domain.</p>
+<figure class="kg-card kg-image-card">
+    <img src="https://yaphc.com/content/images/2018/12/netlify-go-to-dns-panel.jpg" class="kg-image" width="350" height="auto" alt="Hosting ghost blog as static website">
+    <figcaption>Enter DNS panel</figcaption>
+</figure>
+<p>You will see a few Netlify nameservers. Add them to the custom DNS in your domain registrar.</p>
+<figure class="kg-card kg-image-card">
+    <img src="https://yaphc.com/content/images/2018/12/netlify-nameservers.jpg" alt="Hosting ghost blog as static website">
+    <figcaption>Netlify nameservers</figcaption>
+</figure>
+<p>For example, I am using namecheap and this is what it should look like.</p>
+<figure class="kg-card kg-image-card">
+    <img src="https://yaphc.com/content/images/2018/12/namecheap-custom-dns.jpg" alt="Hosting ghost blog as static website">
+    <figcaption>Namecheap custom DNS</figcaption>
+</figure>
+<h2 id="inclosing">In closing</h2>
+<p>Ghost comes with an elegant user interface which allows us to write content peacefully. Hosting ghost as a static website is free and comes with other perks such as fast loading speed(SEO), more secure and able to handle huge traffc volumes if a post becomes viral overnight.</p>
+]]></content:encoded></item><item><title><![CDATA[Why blog with ghost platform?]]></title><description><![CDATA[With popular website builders  such as wordpress and wix, why is it ever a good idea to blog with ghost platform? Answer: Pleasant writing eperience]]></description><link>https://yaphc.com/blog-ghost-platform/</link><guid isPermaLink="false">5bdd6c5a3785f35fbcc0ec79</guid><category><![CDATA[ghost platform]]></category><category><![CDATA[blog]]></category><dc:creator><![CDATA[Yap Han Chiang]]></dc:creator><pubDate>Sat, 01 Dec 2018 12:15:00 GMT</pubDate><media:content url="https://yaphc.com/content/images/2018/12/person-shadow-holding-door.jpeg" medium="image"/><content:encoded><![CDATA[<img src="https://yaphc.com/content/images/2018/12/person-shadow-holding-door.jpeg" alt="Why blog with ghost platform?"><p>Having tried Static Site Generators(SSGs) such as <a href="https://www.gatsbyjs.org/" target="_blank">Gatsby</a>, <a href="https://react-static.js.org/" target="_blank">React-Static</a>, <a href="https://gohugo.io/" target="_blank">Hugo</a>, I have to say that I am frustrated(<em>read: lazy</em>) at having to either buy into their templating system(Hugo), content retrieval workflow(Gatsby) or just simply starting from the ground up while building my own personal website.</p>
 <h2 id="thepositive">The positive</h2>
 <h3 id="theeditorandadmininterface">The editor and admin interface</h3>
 <p>Ghost 2.0 comes with a elegant and intuitive editor that makes the writing experience really pleasant.<br>
