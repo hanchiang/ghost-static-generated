@@ -1,4 +1,67 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="https://purl.org/dc/elements/1.1/" xmlns:content="https://purl.org/rss/1.0/modules/content/" xmlns:atom="https://www.w3.org/2005/Atom" version="2.0" xmlns:media="https://search.yahoo.com/mrss/"><channel><title><![CDATA[yaphc]]></title><description><![CDATA[The journey of a full stack developer which includes useful tips and tricks for finding your way around the world of technology.]]></description><link>https://yaphc.com/</link><image><url>https://yaphc.com/favicon.png</url><title>yaphc</title><link>https://yaphc.com/</link></image><generator>Ghost 2.11</generator><lastBuildDate>Sat, 19 Jan 2019 09:50:29 GMT</lastBuildDate><atom:link href="https://yaphc.com/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title><![CDATA[19 Jan 2018 - A bizarre dream]]></title><description><![CDATA[I dreamt about killing two people in my life. I can't remember who they were, or what threats they posed to my life. ]]></description><link>https://yaphc.com/a-bizarre-dream/</link><guid isPermaLink="false">5c42ef38a89ca4194969249d</guid><category><![CDATA[dream]]></category><category><![CDATA[storytelling]]></category><dc:creator><![CDATA[Yap Han Chiang]]></dc:creator><pubDate>Sat, 19 Jan 2019 09:48:04 GMT</pubDate><media:content url="https://yaphc.com/content/images/2019/01/nightmare.jpg" medium="image"/><content:encoded><![CDATA[<h2 id="anemotionallyintensedream">An emotionally intense dream</h2>
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="https://purl.org/dc/elements/1.1/" xmlns:content="https://purl.org/rss/1.0/modules/content/" xmlns:atom="https://www.w3.org/2005/Atom" version="2.0" xmlns:media="https://search.yahoo.com/mrss/"><channel><title><![CDATA[yaphc]]></title><description><![CDATA[The journey of a full stack developer which includes useful tips and tricks for finding your way around the world of technology.]]></description><link>https://yaphc.com/</link><image><url>https://yaphc.com/favicon.png</url><title>yaphc</title><link>https://yaphc.com/</link></image><generator>Ghost 2.11</generator><lastBuildDate>Mon, 21 Jan 2019 14:06:02 GMT</lastBuildDate><atom:link href="https://yaphc.com/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title><![CDATA[Zsh - The enhanced bash]]></title><description><![CDATA[<p>Some call it shell, others call it the terminal, command line. Whatever it is called, it is the lifeblood of programmers using a unix-based system.</p>
+<p>My first encounter with the Z shell was during my internship in 2018 summer. My tech lead was troubleshooting some docker issues on my laptop</p>]]></description><link>https://yaphc.com/zsh-the-enhanced-bash/</link><guid isPermaLink="false">5c45bb85c27d9d0f69399ccd</guid><dc:creator><![CDATA[Yap Han Chiang]]></dc:creator><pubDate>Mon, 21 Jan 2019 13:05:40 GMT</pubDate><media:content url="https://yaphc.com/content/images/2019/01/maximize-terminal-productivity.png" medium="image"/><content:encoded><![CDATA[<img src="https://yaphc.com/content/images/2019/01/maximize-terminal-productivity.png" alt="Zsh - The enhanced bash"><p>Some call it shell, others call it the terminal, command line. Whatever it is called, it is the lifeblood of programmers using a unix-based system.</p>
+<p>My first encounter with the Z shell was during my internship in 2018 summer. My tech lead was troubleshooting some docker issues on my laptop and he remarked:</p>
+<blockquote>
+<p>&quot;Bash sucks. Use z shell, it is so much better&quot;</p>
+</blockquote>
+<h2 id="benefits">Benefits</h2>
+<p>Every programmer's goal is to maximise productivity while minimising the amount of effort expended.</p>
+<p>Without diving into the history of bash and Z shell, let's talk about some wins I have experienced in my workflow:</p>
+<p><strong>cd tab autocomplete</strong><br>
+For bash, the tab autocomplete shows a list of directories matching the current word, while Z shell allows me to cycle through the directory list with a double tab.</p>
+<p>It is not a big deal when there is only one directory that matches the current word, but can save a tiny bit of time when there are multiple matches and the names are long.</p>
+<figure class="kg-card kg-image-card">
+  <img src="https://yaphc.com/content/images/2019/01/bash-tab-autocomplete.jpg" class="kg-image" alt="Zsh - The enhanced bash">
+  <figcaption>bash tab autocomplete</figcaption>
+</figure>
+<figure class="kg-card kg-image-card">
+  <img src="https://yaphc.com/content/images/2019/01/zsh-tab-autocomplete.jpg" class="kg-image" alt="Zsh - The enhanced bash">
+  <figcaption>zsh tab autocomplete</figcaption>
+</figure>
+<h3 id="ohmyzsh">Oh my Zsh!</h3>
+<p>We can't talk about Z shell without mentioning the awesome <a href="https://github.com/robbyrussell/oh-my-zsh" target="_blank">oh-my-zsh</a> framework, which comes with themes and plugins that supercharges the Z shell itself.</p>
+<p>It is similar to jetpack from wordpress, which magically does a lot work for us.</p>
+<p>In the words of oh-my-zsh's maintainers:</p>
+<blockquote>
+<p>Oh My Zsh will not make you a 10x developer...but you might feel like one</p>
+</blockquote>
+<p><strong>z command: smart cd based on history</strong><br>
+Gone are the days when we have to manually <code>cd</code> or <code>Open in Terminal</code> in our working directory.</p>
+<p>Just do a <code>z &lt;my_working_directory&gt;</code> and Z shell will (hopefully) get you to the destination in a jiffy. Not to mention that the command has a tolerance for typo error.</p>
+<p><strong>Note</strong>: The path that we want to <code>z</code> into should be manually navigated to at least once, so that Z shell will &quot;remember&quot; it for future use.</p>
+<figure class="kg-card kg-image-card">
+  <img src="https://yaphc.com/content/images/2019/01/zsh-z-cd-based-on-history.jpg" class="kg-image" alt="Zsh - The enhanced bash">
+  <figcaption>zsh z cd based on history</figcaption>
+</figure>
+<p><strong>git branch no more</strong><br>
+Let's take a moment to reflect on how much time was wasted by typing <code>git branch</code> in our entire lifetime.</p>
+<p>With the <code>agnoster</code> theme, the current branch is clearly shown in the terminal.</p>
+<figure class="kg-card kg-image-card">
+  <img src="https://yaphc.com/content/images/2019/01/oh-my-zsh-git-plugin.jpg" class="kg-image" alt="Zsh - The enhanced bash">
+  <figcaption>oh-my-zsh git plugin</figcaption>
+</figure>
+<p><strong>Autocomplete suggestion</strong><br>
+Z shell is all about being lazy to save precious time, and this takes the cake because no one got the time to type in the same command more than once.</p>
+<p>Autocomplete suggestions shows up as a muted gray color as we type the commands, and we just have to hit → to accept the suggestion.</p>
+<figure class="kg-card kg-image-card">
+  <img src="https://yaphc.com/content/images/2019/01/oh-my-zsh-autosuggestions.jpg" class="kg-image" alt="Zsh - The enhanced bash">
+  <figcaption>oh-my-zsh autocomplete suggestion</figcaption>
+</figure>
+<h2 id="summary">Summary</h2>
+<p>I'm sure these are just barely scratching the surface of Z shell and bash, but for what it's worth, these features have certainly turned me into a lazier and more productive programmer!</p>
+<h2 id="references">References</h2>
+<p><a href="https://github.com/robbyrussell/oh-my-zsh" target="_blank">oh-my-zsh</a><br>
+<a href="https://github.com/robbyrussell/oh-my-zsh/wiki/Installing-ZSH" target="_blank">Install zsh</a><br>
+<a href="https://github.com/zsh-users/zsh-autosuggestions" target="_blank">zsh autosuggestions</a></p>
+<p><strong>My zsh config</strong></p>
+<figure class="kg-card kg-image-card">
+  <img src="https://yaphc.com/content/images/2019/01/oh-my-zsh-theme.jpg" class="kg-image" alt="Zsh - The enhanced bash">
+  <figcaption>My oh-my-zsh theme</figcaption>
+</figure>
+<figure class="kg-card kg-image-card">
+  <img src="https://yaphc.com/content/images/2019/01/oh-my-zsh-plugins.jpg" class="kg-image" alt="Zsh - The enhanced bash">
+  <figcaption>My oh-my-zsh plugins</figcaption>
+</figure>]]></content:encoded></item><item><title><![CDATA[19 Jan 2018 - A bizarre dream]]></title><description><![CDATA[I dreamt about killing two people in my life. I can't remember who they were, or what threats they posed to my life. ]]></description><link>https://yaphc.com/a-bizarre-dream/</link><guid isPermaLink="false">5c42ef38a89ca4194969249d</guid><category><![CDATA[dream]]></category><category><![CDATA[storytelling]]></category><dc:creator><![CDATA[Yap Han Chiang]]></dc:creator><pubDate>Sat, 19 Jan 2019 09:48:04 GMT</pubDate><media:content url="https://yaphc.com/content/images/2019/01/nightmare.jpg" medium="image"/><content:encoded><![CDATA[<h2 id="anemotionallyintensedream">An emotionally intense dream</h2>
 <img src="https://yaphc.com/content/images/2019/01/nightmare.jpg" alt="19 Jan 2018 - A bizarre dream"><p>I dreamt about killing two people in my life. I can't remember who they were, or what threats they posed to my life. The killing blow was delivered simply by a stab to their abdomen, and I walked away calmly as if nothing had happened.</p>
 <p>Shortly after guilt and fear struck me, and I couldn't believe that someone like me who was brought up from a traditional family would actually commit a murder! In order to prolong my remaining days as a civilian, I avoided crowded places and people, discarded things that personally identify me.</p>
 <p>But the emotional distress was too much to bear, and every moment was a living hell. So, putting aside my fear of human judgment, I poured out to my friend Russell(do I have a friend called Russell?).</p>

@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <title>Zsh - The enhanced bash</title>
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" type="text/css" href="../assets/built/main.css" />
+
+        <link rel="stylesheet" type="text/css" href="../assets/built/rainbow-monokai.css">
+
+
+    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon" />
+    <link rel="canonical" href="/" />
+    <meta name="referrer" content="no-referrer-when-downgrade" />
+    <link rel="amphtml" href="amp/" />
+    
+    <meta property="og:site_name" content="yaphc" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="Zsh - The enhanced bash" />
+    <meta property="og:description" content="Some call it shell, others call it the terminal, command line. Whatever it is
+called, it is the lifeblood of programmers using a unix-based system.
+
+My first encounter with the Z shell was during my internship in 2018 summer. My
+tech lead was troubleshooting some docker issues on my laptop and he remarked:
+
+&quot;Bash sucks. Use z shell, it is so much better&quot;
+
+Benefits
+Every programmer&#x27;s goal is to maximise productivity while minimising the amount
+of effort expended.
+
+Without diving into the history " />
+    <meta property="og:url" content="https://yaphc.com/zsh-the-enhanced-bash/" />
+    <meta property="og:image" content="https://yaphc.com/content/images/2019/01/maximize-terminal-productivity.png" />
+    <meta property="article:published_time" content="2019-01-21T13:05:40.000Z" />
+    <meta property="article:modified_time" content="2019-01-21T14:05:13.000Z" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Zsh - The enhanced bash" />
+    <meta name="twitter:description" content="Some call it shell, others call it the terminal, command line. Whatever it is
+called, it is the lifeblood of programmers using a unix-based system.
+
+My first encounter with the Z shell was during my internship in 2018 summer. My
+tech lead was troubleshooting some docker issues on my laptop and he remarked:
+
+&quot;Bash sucks. Use z shell, it is so much better&quot;
+
+Benefits
+Every programmer&#x27;s goal is to maximise productivity while minimising the amount
+of effort expended.
+
+Without diving into the history " />
+    <meta name="twitter:url" content="https://yaphc.com/zsh-the-enhanced-bash/" />
+    <meta name="twitter:image" content="https://yaphc.com/content/images/2019/01/maximize-terminal-productivity.png" />
+    <meta name="twitter:label1" content="Written by" />
+    <meta name="twitter:data1" content="Yap Han Chiang" />
+    <meta property="og:image:width" content="2200" />
+    <meta property="og:image:height" content="1125" />
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name": "yaphc",
+        "logo": "https://casper.ghost.org/v1.0.0/images/ghost-logo.svg"
+    },
+    "author": {
+        "@type": "Person",
+        "name": "Yap Han Chiang",
+        "image": {
+            "@type": "ImageObject",
+            "url": "//www.gravatar.com/avatar/50d7c86ec9e926a48b2a0df1ce340ad5?s=250&d=mm&r=x",
+            "width": 250,
+            "height": 250
+        },
+        "url": "https://yaphc.com/author/yaphc/",
+        "sameAs": []
+    },
+    "headline": "Zsh - The enhanced bash",
+    "url": "https://yaphc.com/zsh-the-enhanced-bash/",
+    "datePublished": "2019-01-21T13:05:40.000Z",
+    "dateModified": "2019-01-21T14:05:13.000Z",
+    "image": {
+        "@type": "ImageObject",
+        "url": "https://yaphc.com/content/images/2019/01/maximize-terminal-productivity.png",
+        "width": 2200,
+        "height": 1125
+    },
+    "description": "Some call it shell, others call it the terminal, command line. Whatever it is\ncalled, it is the lifeblood of programmers using a unix-based system.\n\nMy first encounter with the Z shell was during my internship in 2018 summer. My\ntech lead was troubleshooting some docker issues on my laptop and he remarked:\n\n&quot;Bash sucks. Use z shell, it is so much better&quot;\n\nBenefits\nEvery programmer&#x27;s goal is to maximise productivity while minimising the amount\nof effort expended.\n\nWithout diving into the history ",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://yaphc.com/"
+    }
+}
+    </script>
+
+    <script src="../public/ghost-sdk.js"></script>
+<script>
+ghost.init({
+	clientId: "ghost-frontend",
+	clientSecret: "4fa620a7e224"
+});
+</script>
+    <meta name="generator" content="Ghost 2.11" />
+    <link rel="alternate" type="application/rss+xml" title="yaphc" href="../rss/" />
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-130110378-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-130110378-1');
+    </script>
+</head>
+<body class="post-template">
+
+    <div class="site-wrapper">
+
+        
+
+
+<header class="site-header outer">
+    <div class="inner">
+        <nav class="site-nav">
+    <div class="site-nav-left">
+            <a class="site-nav-logo" href="../">yaphc</a>
+            <ul class="nav" role="menu">
+    <li class="nav-home" role="menuitem"><a href="../">Home</a></li>
+    <li class="nav-about" role="menuitem"><a href="../about/">About</a></li>
+    <li class="nav-contact" role="menuitem"><a href="../contact/">Contact</a></li>
+    <li class="nav-tags" role="menuitem"><a href="../tags/">Tags</a></li>
+</ul>
+
+    </div>
+    <div class="site-nav-right">
+        <div class="social-links">
+            <a class="social-link social-link-gh" href="https://github.com/hanchiang" title="Github" target="_blank" rel="noopener"><?xml version="1.0" encoding="iso-8859-1"?>
+<!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "https://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="Capa_1" xmlns="https://www.w3.org/2000/svg" xmlns:xlink="https://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="20px" height="20px" viewBox="0 0 438.549 438.549" style="enable-background:new 0 0 438.549 438.549;"
+	 xml:space="preserve">
+	<path d="M409.132,114.573c-19.608-33.596-46.205-60.194-79.798-79.8C295.736,15.166,259.057,5.365,219.271,5.365
+		c-39.781,0-76.472,9.804-110.063,29.408c-33.596,19.605-60.192,46.204-79.8,79.8C9.803,148.168,0,184.854,0,224.63
+		c0,47.78,13.94,90.745,41.827,128.906c27.884,38.164,63.906,64.572,108.063,79.227c5.14,0.954,8.945,0.283,11.419-1.996
+		c2.475-2.282,3.711-5.14,3.711-8.562c0-0.571-0.049-5.708-0.144-15.417c-0.098-9.709-0.144-18.179-0.144-25.406l-6.567,1.136
+		c-4.187,0.767-9.469,1.092-15.846,1c-6.374-0.089-12.991-0.757-19.842-1.999c-6.854-1.231-13.229-4.086-19.13-8.559
+		c-5.898-4.473-10.085-10.328-12.56-17.556l-2.855-6.57c-1.903-4.374-4.899-9.233-8.992-14.559
+		c-4.093-5.331-8.232-8.945-12.419-10.848l-1.999-1.431c-1.332-0.951-2.568-2.098-3.711-3.429c-1.142-1.331-1.997-2.663-2.568-3.997
+		c-0.572-1.335-0.098-2.43,1.427-3.289c1.525-0.859,4.281-1.276,8.28-1.276l5.708,0.853c3.807,0.763,8.516,3.042,14.133,6.851
+		c5.614,3.806,10.229,8.754,13.846,14.842c4.38,7.806,9.657,13.754,15.846,17.847c6.184,4.093,12.419,6.136,18.699,6.136
+		c6.28,0,11.704-0.476,16.274-1.423c4.565-0.952,8.848-2.383,12.847-4.285c1.713-12.758,6.377-22.559,13.988-29.41
+		c-10.848-1.14-20.601-2.857-29.264-5.14c-8.658-2.286-17.605-5.996-26.835-11.14c-9.235-5.137-16.896-11.516-22.985-19.126
+		c-6.09-7.614-11.088-17.61-14.987-29.979c-3.901-12.374-5.852-26.648-5.852-42.826c0-23.035,7.52-42.637,22.557-58.817
+		c-7.044-17.318-6.379-36.732,1.997-58.24c5.52-1.715,13.706-0.428,24.554,3.853c10.85,4.283,18.794,7.952,23.84,10.994
+		c5.046,3.041,9.089,5.618,12.135,7.708c17.705-4.947,35.976-7.421,54.818-7.421s37.117,2.474,54.823,7.421l10.849-6.849
+		c7.419-4.57,16.18-8.758,26.262-12.565c10.088-3.805,17.802-4.853,23.134-3.138c8.562,21.509,9.325,40.922,2.279,58.24
+		c15.036,16.18,22.559,35.787,22.559,58.817c0,16.178-1.958,30.497-5.853,42.966c-3.9,12.471-8.941,22.457-15.125,29.979
+		c-6.191,7.521-13.901,13.85-23.131,18.986c-9.232,5.14-18.182,8.85-26.84,11.136c-8.662,2.286-18.415,4.004-29.263,5.146
+		c9.894,8.562,14.842,22.077,14.842,40.539v60.237c0,3.422,1.19,6.279,3.572,8.562c2.379,2.279,6.136,2.95,11.276,1.995
+		c44.163-14.653,80.185-41.062,108.068-79.226c27.88-38.161,41.825-81.126,41.825-128.906
+		C438.536,184.851,428.728,148.168,409.132,114.573z"/>
+</svg>
+</a>
+        </div>
+            <a class="rss-button" href="https://feedly.com/i/subscription/feed/https://yaphc.com/rss/" title="RSS" target="_blank" rel="noopener"><svg xmlns="https://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="6.18" cy="17.82" r="2.18"/><path d="M4 4.44v2.83c7.03 0 12.73 5.7 12.73 12.73h2.83c0-8.59-6.97-15.56-15.56-15.56zm0 5.66v2.83c3.9 0 7.07 3.17 7.07 7.07h2.83c0-5.47-4.43-9.9-9.9-9.9z"/></svg>
+</a>
+    </div>
+</nav>
+    </div>
+</header>
+
+
+<main id="site-main" class="site-main outer">
+    <div class="inner">
+
+        <article class="post-full post ">
+
+            <header class="post-full-header">
+                <section class="post-full-meta">
+                    <time class="post-full-meta-date" datetime="2019-01-21">21 January 2019</time>
+                </section>
+                <h1 class="post-full-title">Zsh - The enhanced bash</h1>
+            </header>
+
+            <figure class="post-full-image">
+                <img
+                    srcset="https://yaphc.com/content/images/size/w300/2019/01/maximize-terminal-productivity.png 300w,
+                            https://yaphc.com/content/images/size/w600/2019/01/maximize-terminal-productivity.png 600w,
+                            https://yaphc.com/content/images/size/w1000/2019/01/maximize-terminal-productivity.png 1000w,
+                            https://yaphc.com/content/images/size/w2000/2019/01/maximize-terminal-productivity.png 2000w"
+                    sizes="(max-width: 800px) 400px,
+                            (max-width: 1170px) 700px,
+                            1400px"
+                    src="../content/images/size/w2000/2019/01/maximize-terminal-productivity.png"
+                    alt="Zsh - The enhanced bash"
+                />
+            </figure>
+
+            <section class="post-full-content">
+                <div class="post-content">
+                    <p>Some call it shell, others call it the terminal, command line. Whatever it is called, it is the lifeblood of programmers using a unix-based system.</p>
+<p>My first encounter with the Z shell was during my internship in 2018 summer. My tech lead was troubleshooting some docker issues on my laptop and he remarked:</p>
+<blockquote>
+<p>&quot;Bash sucks. Use z shell, it is so much better&quot;</p>
+</blockquote>
+<h2 id="benefits">Benefits</h2>
+<p>Every programmer's goal is to maximise productivity while minimising the amount of effort expended.</p>
+<p>Without diving into the history of bash and Z shell, let's talk about some wins I have experienced in my workflow:</p>
+<p><strong>cd tab autocomplete</strong><br>
+For bash, the tab autocomplete shows a list of directories matching the current word, while Z shell allows me to cycle through the directory list with a double tab.</p>
+<p>It is not a big deal when there is only one directory that matches the current word, but can save a tiny bit of time when there are multiple matches and the names are long.</p>
+<figure class="kg-card kg-image-card">
+  <img src="../content/images/2019/01/bash-tab-autocomplete.jpg" class="kg-image" alt="bash tab autocomplete">
+  <figcaption>bash tab autocomplete</figcaption>
+</figure>
+<figure class="kg-card kg-image-card">
+  <img src="../content/images/2019/01/zsh-tab-autocomplete.jpg" class="kg-image" alt="z shell tab autocomplete">
+  <figcaption>zsh tab autocomplete</figcaption>
+</figure>
+<h3 id="ohmyzsh">Oh my Zsh!</h3>
+<p>We can't talk about Z shell without mentioning the awesome <a href="https://github.com/robbyrussell/oh-my-zsh" target="_blank">oh-my-zsh</a> framework, which comes with themes and plugins that supercharges the Z shell itself.</p>
+<p>It is similar to jetpack from wordpress, which magically does a lot work for us.</p>
+<p>In the words of oh-my-zsh's maintainers:</p>
+<blockquote>
+<p>Oh My Zsh will not make you a 10x developer...but you might feel like one</p>
+</blockquote>
+<p><strong>z command: smart cd based on history</strong><br>
+Gone are the days when we have to manually <code>cd</code> or <code>Open in Terminal</code> in our working directory.</p>
+<p>Just do a <code>z &lt;my_working_directory&gt;</code> and Z shell will (hopefully) get you to the destination in a jiffy. Not to mention that the command has a tolerance for typo error.</p>
+<p><strong>Note</strong>: The path that we want to <code>z</code> into should be manually navigated to at least once, so that Z shell will &quot;remember&quot; it for future use.</p>
+<figure class="kg-card kg-image-card">
+  <img src="../content/images/2019/01/zsh-z-cd-based-on-history.jpg" class="kg-image" alt="Z shell z cd based on history">
+  <figcaption>zsh z cd based on history</figcaption>
+</figure>
+<p><strong>git branch no more</strong><br>
+Let's take a moment to reflect on how much time was wasted by typing <code>git branch</code> in our entire lifetime.</p>
+<p>With the <code>agnoster</code> theme, the current branch is clearly shown in the terminal.</p>
+<figure class="kg-card kg-image-card">
+  <img src="../content/images/2019/01/oh-my-zsh-git-plugin.jpg" class="kg-image" alt="oh-my-zsh git plugin">
+  <figcaption>oh-my-zsh git plugin</figcaption>
+</figure>
+<p><strong>Autocomplete suggestion</strong><br>
+Z shell is all about being lazy to save precious time, and this takes the cake because no one got the time to type in the same command more than once.</p>
+<p>Autocomplete suggestions shows up as a muted gray color as we type the commands, and we just have to hit → to accept the suggestion.</p>
+<figure class="kg-card kg-image-card">
+  <img src="../content/images/2019/01/oh-my-zsh-autosuggestions.jpg" class="kg-image" alt="oh-my-zsh autocomplete suggestion">
+  <figcaption>oh-my-zsh autocomplete suggestion</figcaption>
+</figure>
+<h2 id="summary">Summary</h2>
+<p>I'm sure these are just barely scratching the surface of Z shell and bash, but for what it's worth, these features have certainly turned me into a lazier and more productive programmer!</p>
+<h2 id="references">References</h2>
+<p><a href="https://github.com/robbyrussell/oh-my-zsh" target="_blank">oh-my-zsh</a><br>
+<a href="https://github.com/robbyrussell/oh-my-zsh/wiki/Installing-ZSH" target="_blank">Install zsh</a><br>
+<a href="https://github.com/zsh-users/zsh-autosuggestions" target="_blank">zsh autosuggestions</a></p>
+<p><strong>My zsh config</strong></p>
+<figure class="kg-card kg-image-card">
+  <img src="../content/images/2019/01/oh-my-zsh-theme.jpg" class="kg-image" alt="My oh-my-zsh theme">
+  <figcaption>My oh-my-zsh theme</figcaption>
+</figure>
+<figure class="kg-card kg-image-card">
+  <img src="../content/images/2019/01/oh-my-zsh-plugins.jpg" class="kg-image" alt="My oh-my-zsh plugins">
+  <figcaption>My oh-my-zsh plugins</figcaption>
+</figure>
+                </div>
+            </section>
+
+
+            <footer class="post-full-footer">
+
+
+                    
+<section class="author-card">
+        <img class="author-profile-image" src="https://www.gravatar.com/avatar/50d7c86ec9e926a48b2a0df1ce340ad5?s=250&amp;d=mm&amp;r=x" alt="Yap Han Chiang" />
+    <section class="author-card-content">
+        <h4 class="author-card-name"><a href="../author/yaphc/">Yap Han Chiang</a></h4>
+            <p>Full stack developer. 
+Documenting my journey in computing.</p>
+    </section>
+</section>
+<div class="post-full-footer-right">
+    <a class="author-card-button" href="../author/yaphc/">Read More</a>
+</div>
+
+
+            </footer>
+            
+            <div class="mailchimp-post-wrapper">
+                <div id="mc_embed_signup">
+  <form action="https://yaphc.us19.list-manage.com/subscribe/post?u=4c3d8eca1f4fa9aa949dd5c23&amp;id=9f473431c7" method="post"
+    id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+    <div id="mc_embed_signup_scroll">
+      <h2>Subscribe to our mailing list</h2>
+      <div class="indicates-required"><span class="asterisk">*</span> indicates required</div>
+      <div class="mc-field-group">
+        <label for="mce-EMAIL">Email Address <span class="asterisk">*</span>
+        </label>
+        <input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL">
+      </div>
+      <div class="mc-field-group">
+        <label for="mce-FNAME">Name </label>
+        <input type="text" value="" name="FNAME" class="" id="mce-FNAME">
+      </div>
+      <div id="mce-responses" class="clear">
+        <div class="response" id="mce-error-response" style="display:none"></div>
+        <div class="response" id="mce-success-response" style="display:none"></div>
+      </div>
+      <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+      <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_4c3d8eca1f4fa9aa949dd5c23_9f473431c7"
+          tabindex="-1" value=""></div>
+      <div class="clear"><input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button"></div>
+    </div>
+  </form>
+</div>
+<script type='text/javascript' src='https://s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js'></script>
+<script defer type='text/javascript'>(function ($) { window.fnames = new Array(); window.ftypes = new Array(); fnames[0] = 'EMAIL'; ftypes[0] = 'email'; fnames[1] = 'FNAME'; ftypes[1] = 'text'; fnames[2] = 'LNAME'; ftypes[2] = 'text'; fnames[3] = 'ADDRESS'; ftypes[3] = 'address'; fnames[4] = 'PHONE'; ftypes[4] = 'phone'; fnames[5] = 'BIRTHDAY'; ftypes[5] = 'birthday'; }(jQuery)); var $mcj = jQuery.noConflict(true);</script>
+<!--End mc_embed_signup-->            </div>
+
+
+            <section class="post-full-comments commentbox"></div>
+
+        </article>
+
+    </div>
+</main>
+
+<aside class="read-next outer">
+    <div class="inner">
+        <div class="read-next-feed">
+
+
+
+        </div>
+    </div>
+</aside>
+
+<div class="floating-header">
+    <div class="floating-header-logo">
+        <a href="../">
+                <img src="../content/images/size/w30/2018/12/suns-out2.ico" alt="yaphc icon" />
+            <span>yaphc</span>
+        </a>
+    </div>
+    <span class="floating-header-divider">&mdash;</span>
+    <div class="floating-header-title">Zsh - The enhanced bash</div>
+    <div class="floating-header-share">
+        <div class="floating-header-share-label">Share this <svg xmlns="https://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <path d="M7.5 15.5V4a1.5 1.5 0 1 1 3 0v4.5h2a1 1 0 0 1 1 1h2a1 1 0 0 1 1 1H18a1.5 1.5 0 0 1 1.5 1.5v3.099c0 .929-.13 1.854-.385 2.748L17.5 23.5h-9c-1.5-2-5.417-8.673-5.417-8.673a1.2 1.2 0 0 1 1.76-1.605L7.5 15.5zm6-6v2m-3-3.5v3.5m6-1v2"/>
+</svg>
+</div>
+        <a class="floating-header-share-tw" href="https://twitter.com/share?text=Zsh%20-%20The%20enhanced%20bash&amp;url=https://yaphc.com/zsh-the-enhanced-bash/"
+            onclick="window.open(this.href, 'share-twitter', 'width=550,height=235');return false;">
+            <svg xmlns="https://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M30.063 7.313c-.813 1.125-1.75 2.125-2.875 2.938v.75c0 1.563-.188 3.125-.688 4.625a15.088 15.088 0 0 1-2.063 4.438c-.875 1.438-2 2.688-3.25 3.813a15.015 15.015 0 0 1-4.625 2.563c-1.813.688-3.75 1-5.75 1-3.25 0-6.188-.875-8.875-2.625.438.063.875.125 1.375.125 2.688 0 5.063-.875 7.188-2.5-1.25 0-2.375-.375-3.375-1.125s-1.688-1.688-2.063-2.875c.438.063.813.125 1.125.125.5 0 1-.063 1.5-.25-1.313-.25-2.438-.938-3.313-1.938a5.673 5.673 0 0 1-1.313-3.688v-.063c.813.438 1.688.688 2.625.688a5.228 5.228 0 0 1-1.875-2c-.5-.875-.688-1.813-.688-2.75 0-1.063.25-2.063.75-2.938 1.438 1.75 3.188 3.188 5.25 4.25s4.313 1.688 6.688 1.813a5.579 5.579 0 0 1 1.5-5.438c1.125-1.125 2.5-1.688 4.125-1.688s3.063.625 4.188 1.813a11.48 11.48 0 0 0 3.688-1.375c-.438 1.375-1.313 2.438-2.563 3.188 1.125-.125 2.188-.438 3.313-.875z"/></svg>
+        </a>
+        <a class="floating-header-share-fb" href="https://www.facebook.com/sharer/sharer.php?u=https://yaphc.com/zsh-the-enhanced-bash/"
+            onclick="window.open(this.href, 'share-facebook','width=580,height=296');return false;">
+            <svg xmlns="https://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M19 6h5V0h-5c-3.86 0-7 3.14-7 7v3H8v6h4v16h6V16h5l1-6h-6V7c0-.542.458-1 1-1z"/></svg>
+        </a>
+    </div>
+    <progress id="reading-progress" class="progress" value="0">
+        <div class="progress-container">
+            <span class="progress-bar"></span>
+        </div>
+    </progress>
+</div>
+
+
+
+
+
+        <footer class="site-footer outer">
+            <div class="site-footer-content inner">
+                <section class="copyright"><a href="../">yaphc</a> &copy; 2019</section>
+                <nav class="site-footer-nav">
+                    <a href="../">Latest Posts</a>
+                    
+                    
+                    <a href="https://github.com/hanchiang" target="_blank" rel="noopener">Github</a>
+                    <a href="../privacy-policy/">Privacy policy</a>
+                </nav>
+            </div>
+        </footer>
+
+
+    </div>
+
+
+    <script>
+        var images = document.querySelectorAll('.kg-gallery-image img');
+        images.forEach(function (image) {
+            var container = image.closest('.kg-gallery-image');
+            var width = image.attributes.width.value;
+            var height = image.attributes.height.value;
+            var ratio = width / height;
+            container.style.flex = ratio + ' 1 0%';
+        })
+    </script>
+
+    <script type="text/javascript" src="../assets/built/main.js"></script>
+
+
+        <script>
+
+    // NOTE: Scroll performance is poor in Safari
+    // - this appears to be due to the events firing much more slowly in Safari.
+    //   Dropping the scroll event and using only a raf loop results in smoother
+    //   scrolling but continuous processing even when not scrolling
+    $(document).ready(function () {
+        // Start fitVids
+        var $postContent = $(".post-full-content");
+        $postContent.fitVids();
+        // End fitVids
+
+        var progressBar = document.querySelector('#reading-progress');
+        var header = document.querySelector('.floating-header');
+        var title = document.querySelector('.post-full-title');
+
+        var lastScrollY = window.scrollY;
+        var lastWindowHeight = window.innerHeight;
+        var lastDocumentHeight = $(document).height();
+        var ticking = false;
+
+        function onScroll() {
+            lastScrollY = window.scrollY;
+            requestTick();
+        }
+
+        function onResize() {
+            lastWindowHeight = window.innerHeight;
+            lastDocumentHeight = $(document).height();
+            requestTick();
+        }
+
+        function requestTick() {
+            if (!ticking) {
+                requestAnimationFrame(update);
+            }
+            ticking = true;
+        }
+
+        function update() {
+            var trigger = title.getBoundingClientRect().top + window.scrollY;
+            var triggerOffset = title.offsetHeight + 35;
+            var progressMax = lastDocumentHeight - lastWindowHeight;
+
+            // show/hide floating header
+            if (lastScrollY >= trigger + triggerOffset) {
+                header.classList.add('floating-active');
+            } else {
+                header.classList.remove('floating-active');
+            }
+
+            progressBar.setAttribute('max', progressMax);
+            progressBar.setAttribute('value', lastScrollY);
+
+            ticking = false;
+        }
+
+        window.addEventListener('scroll', onScroll, {passive: true});
+        window.addEventListener('resize', onResize, false);
+
+        update();
+
+    });
+    </script>
+
+    <script src="../assets/built/rainbow.js"></script>
+    <script defer src="https://unpkg.com/commentbox.io/dist/commentBox.min.js"></script>
+    <script defer src="../assets/built/commentbox.js"></script>
+
+
+
+    
+
+</body>
+</html>
